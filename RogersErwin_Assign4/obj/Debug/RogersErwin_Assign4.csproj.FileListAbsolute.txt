@@ -1,0 +1,10 @@
+D:\CSCI473\RogersErwin_Assign4\RogersErwin_Assign4\bin\Debug\RogersErwin_Assign4.exe.config
+D:\CSCI473\RogersErwin_Assign4\RogersErwin_Assign4\bin\Debug\RogersErwin_Assign4.exe
+D:\CSCI473\RogersErwin_Assign4\RogersErwin_Assign4\bin\Debug\RogersErwin_Assign4.pdb
+D:\CSCI473\RogersErwin_Assign4\RogersErwin_Assign4\obj\Debug\RogersErwin_Assign4.csprojAssemblyReference.cache
+D:\CSCI473\RogersErwin_Assign4\RogersErwin_Assign4\obj\Debug\RogersErwin_Assign4.Form1.resources
+D:\CSCI473\RogersErwin_Assign4\RogersErwin_Assign4\obj\Debug\RogersErwin_Assign4.Properties.Resources.resources
+D:\CSCI473\RogersErwin_Assign4\RogersErwin_Assign4\obj\Debug\RogersErwin_Assign4.csproj.GenerateResource.cache
+D:\CSCI473\RogersErwin_Assign4\RogersErwin_Assign4\obj\Debug\RogersErwin_Assign4.csproj.CoreCompileInputs.cache
+D:\CSCI473\RogersErwin_Assign4\RogersErwin_Assign4\obj\Debug\RogersErwin_Assign4.exe
+D:\CSCI473\RogersErwin_Assign4\RogersErwin_Assign4\obj\Debug\RogersErwin_Assign4.pdb
