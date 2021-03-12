@@ -22,68 +22,30 @@ namespace RogersErwin_Assign4
         }
 
         /*
-         * Taking in mathematical cartesian x,y point (+x => right, +y => up),
-         * return a point that represents that point's equivalent spot in a
-         * the graphBox.
+         * Takes the X and Y values in Point P and converts them to their respective points on the graphing
+         * picture box, returning the result of that conversion as a new Point.
          * 
-         * In order to work with the window's dynamic sizing feature, the point
-         * should be ran through ScalePointToBox and TranslatePointByScope
-         * respectively
-         */
-        public Point ConvertCartesianToPBPnt(Point p)
-        {
-            Point newPoint = new Point();
-            newPoint.X = ((int)(p.X * gParms.Aspect) + gParms.GraphCenter.X);
-            newPoint.Y = (-p.Y + gParms.GraphCenter.Y);
-
-            return newPoint;
-        }
-
-        /*
-         * Overload for above
-         */
-        public Point ConvertCartesianToPBPnt(int x, int y)
-        {
-            Point p = new Point(x, y);
-            return ConvertCartesianToPBPnt(p);
-        }
-
-        /*
-         * Translates a point to make it properly pan with the window's x and y offsets.
-         * For instance, if the xMin is 0 and xMax is 200, then we should expect the point
-         * (0,0) to actually be moved 100 units left.
+         * It also is sure to account for the drawing field's scope: If the field is shifted
+         * x units to the right, all points will be shifted x points to the LEFT and then converted to 
+         * pictureBox units.
          * 
-         * 
+         * It is entirely possible for a Point returned by this function to have a negative value for x or y,
+         * meaning that it would be off screen. This is both okay and expected.
          */
-        public Point TranslatePointByScope(Point p)
+        public Point CartesianToUIPoint(Point p)
         {
-            int xMiddle = (int)((gParms.XMax + gParms.XMin) * 0.5);
-            int yMiddle = (int)((gParms.YMax + gParms.YMin) * 0.5);
-
-            p.X -= xMiddle;
-            p.Y -= yMiddle;
-
-            return p;
-        }
-
-        /*
-         * Scales a Point's values to properly match the size of the window. For instance,
-         * if the xMin is -10 and xMax is 10, we should expect a point at (9,9) to be nearly
-         * right up against the top-right of the window's space.
-         */
-        public Point ScalePointToBox(Point p)
-        {
-            p.X = (int)(p.X * gParms.XScalar);
-            p.Y = (int)(p.Y * gParms.YScalar);
-
-            return p;
-        }
-
-        public Point FullConvertCartesian(Point p)
-        {
-            p = ScalePointToBox(p);
-            p = TranslatePointByScope(p);
-            p = ConvertCartesianToPBPnt(p);
+            /*
+             * The following two calculations essentially do the same thing, but for X and Y. Here's what happens
+             * with X:
+             * 
+             * 1) Figure out how close X is to xMax from xMin. Call this 'p'. (p = 0.8 if x = 18, xMin = 10, & xMax = 20)
+             * 2) Multiply the width of the PictureBox by p to convert it to a PictureBox point.
+             * 
+             * With this method, cartesian points will be properly remapped to PictureBox points. This also inherently
+             * accounts for potential x-axis skewing due to the PictureBox's aspect ratio.
+             */
+            p.X = (int)(((double)(p.X - gParms.XMin) / (double)(gParms.XMax - gParms.XMin)) * (double)graphPB.Width);
+            p.Y = (int)(((double)(gParms.YMax - p.Y) / (double)(gParms.YMax - gParms.YMin)) * (double)graphPB.Height);
 
             return p;
         }
@@ -98,35 +60,84 @@ namespace RogersErwin_Assign4
             using (Pen pen = new Pen(Color.White))
             {
                 PaintAxis(g, pen);
+                PaintTicks(g, pen);
                 pen.Color = Color.White;
 
-                Point p1 = new Point(-198, -198);
-                Point p2 = new Point(198, 198);
+                Point p1 = CartesianToUIPoint(new Point(-10, -10));
+                Point p2 = CartesianToUIPoint(new Point(10, 10));
 
-                p1 = FullConvertCartesian(p1);
-                p2 = FullConvertCartesian(p2);
 
                 g.DrawLine(pen, p1, p2);
             }
         }
 
+        /*
+         * Paints in the x and y axes.
+         */
         private void PaintAxis(Graphics g, Pen pen)
         {
             pen.Color = Color.Goldenrod;
 
-            Point westPoint = new Point(-10, 0);
-            Point eastPoint = new Point(10, 0);
+            Point northPoint = CartesianToUIPoint(new Point(0, gParms.YMax));           // Northern Point of the Y-Axis' y value will always just be the YMax; there is no reason for it to be any greater.
+            Point southPoint = CartesianToUIPoint(new Point(0, gParms.YMin));           // Similar to above, but south is bounded to YMin.
 
-            double xScalar = ((double)graphPB.Width / (double)(gParms.XMax - gParms.XMin)) * 2.0;
-            westPoint.X = (int)((double)westPoint.X * xScalar);
-            westPoint.X = (westPoint.X + gParms.GraphCenter.X);
-            outputRtb.AppendText(westPoint.ToString() + String.Format(" xScalar: {0: 0.000}", xScalar));
-            westPoint.Y = (gParms.GraphCenter.Y);
+            Point westPoint = CartesianToUIPoint(new Point(gParms.XMin, 0));            // Similar to above, but west is bounded to XMin.
+            Point eastPoint = CartesianToUIPoint(new Point(gParms.XMax, 0));            // You get the picture ;)
 
-            eastPoint.X = (eastPoint.X + gParms.GraphCenter.X);
-            eastPoint.Y = (gParms.GraphCenter.Y);
+            if (northPoint.X == graphPB.Width) { northPoint.X--; southPoint.X--; }      // If the Y-Axis is right up against the right-border, push it left one pixel so it actually displays in this (literal) edge case.
+            if (westPoint.Y == graphPB.Height) { westPoint.Y--; eastPoint.Y--; }        // Ditto, but for the X-Axis. Push it up once if it is against the bottom-border
 
+            // Draw the points.
+            g.DrawLine(pen, southPoint, northPoint);
             g.DrawLine(pen, westPoint, eastPoint);
         }
+
+        private void PaintTicks(Graphics g, Pen pen)
+        {
+            pen.Color = Color.MediumVioletRed;
+
+            int firstTickX = ((gParms.XMin) / gParms.XInterval) * gParms.XInterval;
+            double xScalar = (double) graphPB.Height * 0.10;                            // Scalar for the size of the ticks. Height * 0.10 means tick length will always be 10% of the pictureBox's height, regardless of scope.
+            int xTickHeight = 0;                                                        // Height on the PictureBox where the line of x-tick marks should appear
+
+            if (gParms.YMin > 0) { xTickHeight = gParms.YMin; }                         // If the YMin has moved above the x-axis, bring the tick marks up with it.
+            else if (gParms.YMax < 0) { xTickHeight = gParms.YMax; }                    // Same, but bring them down if YMax has moved down below the y-axis.
+
+            for (int i = firstTickX; i <= gParms.XMax; i += gParms.XInterval)           // Start i at the position of the first x-tick from the left. Increment it by XInterval every loop and continue as long as i is less than the max...
+            {
+                if (i == 0) { continue; }                                                   // If this tick would fall on the origin... Skip it.
+                Point center = CartesianToUIPoint(new Point(i, xTickHeight));               // Create a new Point at x=i, with a y value following the rule given by xTickHeight.
+                        
+                if (i == gParms.XMax) { center.X--; }                                       // If this point would fall on the right-most edge... Push it back so that it actually appears.
+
+                Point upP = new Point(center.X, center.Y + (int)(xScalar));             // Create a new point above the newly made point, xScalar units up
+                Point downP = new Point(center.X, center.Y - (int)(xScalar));           // Same, but for below.
+
+                g.DrawLine(pen, upP, downP);                                            // Draw in the new tick mark.
+            }
+
+            // Pretty much, repeat everything above but slightly modified for y-ticks.
+
+            int firstTickY = ((gParms.YMin) / gParms.YInterval) * gParms.YInterval;
+            double yScalar = xScalar;
+            int yTickHorizontal = 0;
+
+            if (gParms.XMin > 0) { yTickHorizontal = gParms.XMin; }
+            else if (gParms.XMax < 0) { yTickHorizontal = gParms.XMax; }
+
+            for (int i = firstTickY; i <= gParms.YMax; i += gParms.YInterval)
+            {
+                if (i == 0) { continue ;}
+                Point center = CartesianToUIPoint(new Point(yTickHorizontal, i));
+
+                if (i == gParms.YMin) { center.Y--; }
+                
+                Point rightP = new Point(center.X + (int)(yScalar), center.Y);
+                Point leftP = new Point(center.X - (int)(yScalar), center.Y);
+
+                g.DrawLine(pen, leftP, rightP);
+            }
+        }
+
     }
 }
