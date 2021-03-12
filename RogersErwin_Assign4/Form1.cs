@@ -85,5 +85,39 @@ namespace RogersErwin_Assign4
         {
             PaintGraph(sender, e);
         }
+
+        private void LinearColorButton_Click(object sender, EventArgs e)
+        {
+            if (LinearColorDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                // linearGraph color change to selected color
+            }
+       
+        }
+
+        private void QuadColorButton_Click(object sender, EventArgs e)
+        {
+            if (QuadColorDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                // QuadraticGraph color change to selected color
+            }
+        }
+
+        private void CubicColorButton_Click(object sender, EventArgs e)
+        {
+            if (CubicColorDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                // CubicGraph color change to selected color
+            }
+        }
+
+        private void CircleColorButton_Click(object sender, EventArgs e)
+        {
+            if (CircleColorDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                // CircleGraph color change to selected color
+            }
+        }
+
     }
 }
