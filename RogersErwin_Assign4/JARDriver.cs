@@ -11,15 +11,14 @@ namespace RogersErwin_Assign4
     class JARDriver
     {
         private GraphParamsObj gParms;
+        private PictureBox graphPB;
+        private RichTextBox outputRtb;
 
-        public JARDriver(ref GraphParamsObj graphParams)
+        public JARDriver(ref GraphParamsObj graphParams, ref PictureBox graphPB, ref RichTextBox outputRtb)
         {
             this.gParms = graphParams;
-        }
-
-        private void Initialize()
-        {
-
+            this.graphPB = graphPB;
+            this.outputRtb = outputRtb;
         }
 
         /*
@@ -45,17 +44,46 @@ namespace RogersErwin_Assign4
             return ConvertCartesianToPBPnt(p);
         }
 
+        public Point TranslatePointByScope(Point p)
+        {
+            int xMiddle = (int)((gParms.XMax + gParms.XMin) * 0.5);
+            int yMiddle = (int)((gParms.YMax + gParms.YMin) * 0.5);
+
+            p.X -= xMiddle;
+            p.Y -= yMiddle;
+
+            return p;
+        }
+
+        // -----===== PAINTING =====----- //
+
         public void PaintGraph(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
 
             using (Pen pen = new Pen(Color.White))
             {
+                PaintAxis(g, pen);
+
+                pen.Color = Color.White;
                 Point p1 = ConvertCartesianToPBPnt(-100, -100);
                 Point p2 = ConvertCartesianToPBPnt(100, 100);
 
+                p1 = TranslatePointByScope(p1);
+                p2 = TranslatePointByScope(p2);
+
                 g.DrawLine(pen, p1, p2);
             }
+        }
+
+        private void PaintAxis(Graphics g, Pen pen)
+        {
+            pen.Color = Color.Goldenrod;
+            // Y-Axis
+            Point northPnt = new Point(gParms.GraphCenter.X, 0);
+            Point southPnt = new Point(gParms.GraphCenter.X, graphPB.Height);
+
+            g.DrawLine(pen, northPnt, southPnt);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace RogersErwin_Assign4
         private void Initialize()
         {
             graphParams = new GraphParamsObj(ref GraphPB, -100, 100, 10, -100, 100, 10);
-            jarDriver = new JARDriver(ref graphParams);
+            jarDriver = new JARDriver(ref graphParams, ref GraphPB, ref richTextBox1);
         }
 
         private void GraphPB_Paint(object sender, PaintEventArgs e)
