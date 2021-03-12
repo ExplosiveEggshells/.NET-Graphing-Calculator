@@ -45,6 +45,7 @@ namespace RogersErwin_Assign4
             this.yInterval = yInterval;
             CalculateAspect();
             CalculateGraphCenter();
+            RecalculateScalars();
         }
 
         public void CalculateAspect()
@@ -61,8 +62,8 @@ namespace RogersErwin_Assign4
 
         public void RecalculateScalars()
         {
-            xScalar = (graphBox.Width / (xMax - xMin));
-            yScalar = (graphBox.Height / (yMax - yMin));
+            xScalar = ((double)graphBox.Width / (double)(xMax - xMin));
+            yScalar = ((double)graphBox.Height / (double)(yMax - yMin));
         }
 
         public int XMin { get { return xMin; } set { xMin = value; RecalculateScalars(); } }

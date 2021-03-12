@@ -23,7 +23,7 @@ namespace RogersErwin_Assign4
 
         private void Initialize()
         {
-            graphParams = new GraphParamsObj(ref GraphPB, -100, 100, 10, -100, 100, 10);
+            graphParams = new GraphParamsObj(ref GraphPB, -10, 10, 10, -10, 10, 10);
             jarDriver = new JARDriver(ref graphParams, ref GraphPB, ref richTextBox1);
         }
 
@@ -31,6 +31,64 @@ namespace RogersErwin_Assign4
         {
             if (jarDriver == null) return;
             jarDriver.PaintGraph(sender, e);
+        }
+
+        private void XMinTrack_Scroll(object sender, EventArgs e)
+        {
+            if (xMinTrack.Value >= graphParams.XMax)
+            {
+                xMinTrack.Value = graphParams.XMax - 1;
+            }
+            graphParams.XMin = xMinTrack.Value;
+            xMinText.Text = xMinTrack.Value.ToString();
+            GraphPB.Refresh();
+        }
+
+        private void XMaxTrack_Scroll(object sender, EventArgs e)
+        {
+            if (xMaxTrack.Value <= graphParams.XMin)
+            {
+                xMaxTrack.Value = graphParams.XMin + 1;
+            }
+            graphParams.XMax = xMaxTrack.Value;
+            xMaxText.Text = xMaxTrack.Value.ToString();
+            GraphPB.Refresh();
+        }
+
+        private void XIntTrack_Scroll(object sender, EventArgs e)
+        {
+            graphParams.XInterval = xIntTrack.Value;
+            xIntText.Text = xIntTrack.Value.ToString();
+            GraphPB.Refresh();
+        }
+
+        private void YMinTrack_Scroll(object sender, EventArgs e)
+        {
+            if (yMinTrack.Value >= graphParams.YMax)
+            {
+                yMinTrack.Value = graphParams.YMax - 1;
+            }
+            graphParams.YMin = yMinTrack.Value;
+            yMinText.Text = yMinTrack.Value.ToString();
+            GraphPB.Refresh();
+        }
+
+        private void YMaxTrack_Scroll(object sender, EventArgs e)
+        {
+            if (yMaxTrack.Value <= graphParams.YMin)
+            {
+                yMaxTrack.Value = graphParams.YMin + 1;
+            }
+            graphParams.YMax = yMaxTrack.Value;
+            yMaxText.Text = yMaxTrack.Value.ToString();
+            GraphPB.Refresh();
+        }
+
+        private void YIntTrack_Scroll(object sender, EventArgs e)
+        {
+            graphParams.YInterval = YIntTrack.Value;
+            yIntText.Text = YIntTrack.Value.ToString();
+            GraphPB.Refresh();
         }
     }
 }
