@@ -56,7 +56,7 @@
             this.GraphPB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.GraphPB.Location = new System.Drawing.Point(12, 12);
             this.GraphPB.Name = "GraphPB";
-            this.GraphPB.Size = new System.Drawing.Size(693, 344);
+            this.GraphPB.Size = new System.Drawing.Size(692, 346);
             this.GraphPB.TabIndex = 0;
             this.GraphPB.TabStop = false;
             this.GraphPB.Paint += new System.Windows.Forms.PaintEventHandler(this.GraphPB_Paint);

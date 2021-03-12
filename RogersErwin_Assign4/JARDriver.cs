@@ -76,9 +76,6 @@ namespace RogersErwin_Assign4
             p.X = (int)(p.X * gParms.XScalar);
             p.Y = (int)(p.Y * gParms.YScalar);
 
-            outputRtb.AppendText(p.ToString() + String.Format("\tXScalar: {0: 0.000} | YScalar: {1: 0.000}", gParms.XScalar, gParms.YScalar));
-            outputRtb.AppendText("HI: " + graphPB.Width);
-
             return p;
         }
 
@@ -103,8 +100,8 @@ namespace RogersErwin_Assign4
                 PaintAxis(g, pen);
                 pen.Color = Color.White;
 
-                Point p1 = new Point(-8, -8);
-                Point p2 = new Point(8, 8);
+                Point p1 = new Point(-198, -198);
+                Point p2 = new Point(198, 198);
 
                 p1 = FullConvertCartesian(p1);
                 p2 = FullConvertCartesian(p2);
@@ -117,7 +114,19 @@ namespace RogersErwin_Assign4
         {
             pen.Color = Color.Goldenrod;
 
-            
+            Point westPoint = new Point(-10, 0);
+            Point eastPoint = new Point(10, 0);
+
+            double xScalar = ((double)graphPB.Width / (double)(gParms.XMax - gParms.XMin)) * 2.0;
+            westPoint.X = (int)((double)westPoint.X * xScalar);
+            westPoint.X = (westPoint.X + gParms.GraphCenter.X);
+            outputRtb.AppendText(westPoint.ToString() + String.Format(" xScalar: {0: 0.000}", xScalar));
+            westPoint.Y = (gParms.GraphCenter.Y);
+
+            eastPoint.X = (eastPoint.X + gParms.GraphCenter.X);
+            eastPoint.Y = (gParms.GraphCenter.Y);
+
+            g.DrawLine(pen, westPoint, eastPoint);
         }
     }
 }
