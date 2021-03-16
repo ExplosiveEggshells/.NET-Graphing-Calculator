@@ -128,12 +128,15 @@
             // 
             // MTextBox
             // 
-            this.MTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.MTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.MTextBox.BackColor = System.Drawing.Color.Black;
+            this.MTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
             this.MTextBox.Location = new System.Drawing.Point(139, 13);
             this.MTextBox.Name = "MTextBox";
             this.MTextBox.Size = new System.Drawing.Size(46, 20);
             this.MTextBox.TabIndex = 3;
+            this.MTextBox.Text = "10";
+            this.MTextBox.Enter += new System.EventHandler(this.MTextBox_Enter);
+            this.MTextBox.Leave += new System.EventHandler(this.MTextBox_Leave);
             // 
             // CubicButton
             // 
@@ -168,12 +171,15 @@
             // 
             // BTextBox
             // 
-            this.BTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.BTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.BTextBox.BackColor = System.Drawing.Color.Black;
+            this.BTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
             this.BTextBox.Location = new System.Drawing.Point(211, 13);
             this.BTextBox.Name = "BTextBox";
             this.BTextBox.Size = new System.Drawing.Size(46, 20);
             this.BTextBox.TabIndex = 9;
+            this.BTextBox.Text = "10";
+            this.BTextBox.Enter += new System.EventHandler(this.BTextBox_Enter);
+            this.BTextBox.Leave += new System.EventHandler(this.BTextBox_Leave);
             // 
             // QuadLabel
             // 
@@ -223,12 +229,15 @@
             // 
             // AQuadTextBox
             // 
-            this.AQuadTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.AQuadTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.AQuadTextBox.BackColor = System.Drawing.Color.Black;
+            this.AQuadTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
             this.AQuadTextBox.Location = new System.Drawing.Point(139, 35);
             this.AQuadTextBox.Name = "AQuadTextBox";
             this.AQuadTextBox.Size = new System.Drawing.Size(46, 20);
             this.AQuadTextBox.TabIndex = 14;
+            this.AQuadTextBox.Text = "10";
+            this.AQuadTextBox.Enter += new System.EventHandler(this.AQuadTextBox_Enter);
+            this.AQuadTextBox.Leave += new System.EventHandler(this.AQuadTextBox_Leave);
             // 
             // BQuadLabel
             // 
@@ -242,21 +251,27 @@
             // 
             // BQuadTextBox
             // 
-            this.BQuadTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.BQuadTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.BQuadTextBox.BackColor = System.Drawing.Color.Black;
+            this.BQuadTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
             this.BQuadTextBox.Location = new System.Drawing.Point(211, 35);
             this.BQuadTextBox.Name = "BQuadTextBox";
             this.BQuadTextBox.Size = new System.Drawing.Size(46, 20);
             this.BQuadTextBox.TabIndex = 16;
+            this.BQuadTextBox.Text = "10";
+            this.BQuadTextBox.Enter += new System.EventHandler(this.BQuadTextBox_Enter);
+            this.BQuadTextBox.Leave += new System.EventHandler(this.BQuadTextBox_Leave);
             // 
             // CQuadTextBox
             // 
-            this.CQuadTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.CQuadTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.CQuadTextBox.BackColor = System.Drawing.Color.Black;
+            this.CQuadTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
             this.CQuadTextBox.Location = new System.Drawing.Point(287, 35);
             this.CQuadTextBox.Name = "CQuadTextBox";
             this.CQuadTextBox.Size = new System.Drawing.Size(46, 20);
             this.CQuadTextBox.TabIndex = 18;
+            this.CQuadTextBox.Text = "10";
+            this.CQuadTextBox.Enter += new System.EventHandler(this.CQuadTextBox_Enter);
+            this.CQuadTextBox.Leave += new System.EventHandler(this.CQuadTextBox_Leave);
             // 
             // CQuadLabel
             // 
@@ -280,12 +295,15 @@
             // 
             // BCubicTextBox
             // 
-            this.BCubicTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.BCubicTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.BCubicTextBox.BackColor = System.Drawing.Color.Black;
+            this.BCubicTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
             this.BCubicTextBox.Location = new System.Drawing.Point(211, 57);
             this.BCubicTextBox.Name = "BCubicTextBox";
             this.BCubicTextBox.Size = new System.Drawing.Size(46, 20);
             this.BCubicTextBox.TabIndex = 20;
+            this.BCubicTextBox.Text = "10";
+            this.BCubicTextBox.Enter += new System.EventHandler(this.BCubicTextBox_Enter);
+            this.BCubicTextBox.Leave += new System.EventHandler(this.BCubicTextBox_Leave);
             // 
             // CCubicLabel
             // 
@@ -309,21 +327,27 @@
             // 
             // ACubicTextBox
             // 
-            this.ACubicTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ACubicTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.ACubicTextBox.BackColor = System.Drawing.Color.Black;
+            this.ACubicTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
             this.ACubicTextBox.Location = new System.Drawing.Point(139, 57);
             this.ACubicTextBox.Name = "ACubicTextBox";
             this.ACubicTextBox.Size = new System.Drawing.Size(46, 20);
             this.ACubicTextBox.TabIndex = 23;
+            this.ACubicTextBox.Text = "10";
+            this.ACubicTextBox.Enter += new System.EventHandler(this.ACubicTextBox_Enter);
+            this.ACubicTextBox.Leave += new System.EventHandler(this.ACubicTextBox_Leave);
             // 
             // CCubicTextBox
             // 
-            this.CCubicTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.CCubicTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.CCubicTextBox.BackColor = System.Drawing.Color.Black;
+            this.CCubicTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
             this.CCubicTextBox.Location = new System.Drawing.Point(287, 57);
             this.CCubicTextBox.Name = "CCubicTextBox";
             this.CCubicTextBox.Size = new System.Drawing.Size(46, 20);
             this.CCubicTextBox.TabIndex = 24;
+            this.CCubicTextBox.Text = "10";
+            this.CCubicTextBox.Enter += new System.EventHandler(this.CCubicTextBox_Enter);
+            this.CCubicTextBox.Leave += new System.EventHandler(this.CCubicTextBox_Leave);
             // 
             // DCubicLabel
             // 
@@ -337,21 +361,27 @@
             // 
             // DCubicTextBox
             // 
-            this.DCubicTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.DCubicTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.DCubicTextBox.BackColor = System.Drawing.Color.Black;
+            this.DCubicTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
             this.DCubicTextBox.Location = new System.Drawing.Point(363, 57);
             this.DCubicTextBox.Name = "DCubicTextBox";
             this.DCubicTextBox.Size = new System.Drawing.Size(46, 20);
             this.DCubicTextBox.TabIndex = 26;
+            this.DCubicTextBox.Text = "10";
+            this.DCubicTextBox.Enter += new System.EventHandler(this.DCubicTextBox_Enter);
+            this.DCubicTextBox.Leave += new System.EventHandler(this.DCubicTextBox_Leave);
             // 
             // R2TextBox
             // 
-            this.R2TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.R2TextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.R2TextBox.BackColor = System.Drawing.Color.Black;
+            this.R2TextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
             this.R2TextBox.Location = new System.Drawing.Point(287, 80);
             this.R2TextBox.Name = "R2TextBox";
             this.R2TextBox.Size = new System.Drawing.Size(46, 20);
             this.R2TextBox.TabIndex = 32;
+            this.R2TextBox.Text = "10";
+            this.R2TextBox.Enter += new System.EventHandler(this.R2TextBox_Enter);
+            this.R2TextBox.Leave += new System.EventHandler(this.R2TextBox_Leave);
             // 
             // R2CircleLabel
             // 
@@ -365,12 +395,15 @@
             // 
             // KTextBox
             // 
-            this.KTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.KTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.KTextBox.BackColor = System.Drawing.Color.Black;
+            this.KTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
             this.KTextBox.Location = new System.Drawing.Point(211, 80);
             this.KTextBox.Name = "KTextBox";
             this.KTextBox.Size = new System.Drawing.Size(46, 20);
             this.KTextBox.TabIndex = 30;
+            this.KTextBox.Text = "10";
+            this.KTextBox.Enter += new System.EventHandler(this.KTextBox_Enter);
+            this.KTextBox.Leave += new System.EventHandler(this.KTextBox_Leave);
             // 
             // KCircleLabel
             // 
@@ -384,12 +417,15 @@
             // 
             // HTextBox
             // 
-            this.HTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.HTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.HTextBox.BackColor = System.Drawing.Color.Black;
+            this.HTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
             this.HTextBox.Location = new System.Drawing.Point(139, 80);
             this.HTextBox.Name = "HTextBox";
             this.HTextBox.Size = new System.Drawing.Size(46, 20);
             this.HTextBox.TabIndex = 28;
+            this.HTextBox.Text = "10";
+            this.HTextBox.Enter += new System.EventHandler(this.HTextBox_Enter);
+            this.HTextBox.Leave += new System.EventHandler(this.HTextBox_Leave);
             // 
             // HCircleLabel
             // 

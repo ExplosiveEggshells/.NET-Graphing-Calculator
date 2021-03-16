@@ -119,5 +119,166 @@ namespace RogersErwin_Assign4
             }
         }
 
+        private void MTextBox_Enter(object sender, EventArgs e)
+        {
+            MTextBox.Clear();
+            MTextBox.ForeColor = Color.White;
+        }
+        private void MTextBox_Leave(object sender, EventArgs e)
+        {
+            if (MTextBox.TextLength == 0)
+            {
+                MTextBox.ForeColor = Color.FromArgb(255,100,80,100);
+                MTextBox.Text = "10";
+            }
+        }
+
+        private void BTextBox_Enter(object sender, EventArgs e)
+        {
+            BTextBox.Clear();
+            BTextBox.ForeColor = Color.White;
+        }
+        private void BTextBox_Leave(object sender, EventArgs e)
+        {
+            if (BTextBox.TextLength == 0)
+            {
+                BTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
+                BTextBox.Text = "10";
+            }
+        }
+
+        private void AQuadTextBox_Enter(object sender, EventArgs e)
+        {
+            AQuadTextBox.Clear();
+            AQuadTextBox.ForeColor = Color.White;
+        }
+        private void AQuadTextBox_Leave(object sender, EventArgs e)
+        {
+            if (AQuadTextBox.TextLength == 0)
+            {
+                AQuadTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
+                AQuadTextBox.Text = "10";
+            }
+        }
+
+        private void BQuadTextBox_Enter(object sender, EventArgs e)
+        {
+            BQuadTextBox.Clear();
+            BQuadTextBox.ForeColor = Color.White;
+        }
+        private void BQuadTextBox_Leave(object sender, EventArgs e)
+        {
+            if (BQuadTextBox.TextLength == 0)
+            {
+                BQuadTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
+                BQuadTextBox.Text = "10";
+            }
+        }
+
+        private void CQuadTextBox_Enter(object sender, EventArgs e)
+        {
+            CQuadTextBox.Clear();
+            CQuadTextBox.ForeColor = Color.White;
+        }
+        private void CQuadTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CQuadTextBox.TextLength == 0)
+            {
+                CQuadTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
+                CQuadTextBox.Text = "10";
+            }
+        }
+        private void ACubicTextBox_Enter(object sender, EventArgs e)
+        {
+            ACubicTextBox.Clear();
+            ACubicTextBox.ForeColor = Color.White;
+        }
+        private void ACubicTextBox_Leave(object sender, EventArgs e)
+        {
+            if (ACubicTextBox.TextLength == 0)
+            {
+                ACubicTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
+                ACubicTextBox.Text = "10";
+            }
+        }
+        private void BCubicTextBox_Enter(object sender, EventArgs e)
+        {
+            BCubicTextBox.Clear();
+            BCubicTextBox.ForeColor = Color.White;
+        }
+        private void BCubicTextBox_Leave(object sender, EventArgs e)
+        {
+            if (BCubicTextBox.TextLength == 0)
+            {
+                BCubicTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
+                BCubicTextBox.Text = "10";
+            }
+        }
+        private void CCubicTextBox_Enter(object sender, EventArgs e)
+        {
+            CCubicTextBox.Clear();
+            CCubicTextBox.ForeColor = Color.White;
+        }
+        private void CCubicTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CCubicTextBox.TextLength == 0)
+            {
+                CCubicTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
+                CCubicTextBox.Text = "10";
+            }
+        }
+        private void DCubicTextBox_Enter(object sender, EventArgs e)
+        {
+            DCubicTextBox.Clear();
+            DCubicTextBox.ForeColor = Color.White;
+        }
+        private void DCubicTextBox_Leave(object sender, EventArgs e)
+        {
+            if (DCubicTextBox.TextLength == 0)
+            {
+                DCubicTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
+                DCubicTextBox.Text = "10";
+            }
+        }
+        private void HTextBox_Enter(object sender, EventArgs e)
+        {
+            HTextBox.Clear();
+            HTextBox.ForeColor = Color.White;
+        }
+        private void HTextBox_Leave(object sender, EventArgs e)
+        {
+            if (HTextBox.TextLength == 0)
+            {
+                HTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
+                HTextBox.Text = "10";
+            }
+        }
+        private void KTextBox_Enter(object sender, EventArgs e)
+        {
+            KTextBox.Clear();
+            KTextBox.ForeColor = Color.White;
+        }
+        private void KTextBox_Leave(object sender, EventArgs e)
+        {
+            if (KTextBox.TextLength == 0)
+            {
+                KTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
+                KTextBox.Text = "10";
+            }
+        }
+        private void R2TextBox_Enter(object sender, EventArgs e)
+        {
+            R2TextBox.Clear();
+            R2TextBox.ForeColor = Color.White;
+        }
+        private void R2TextBox_Leave(object sender, EventArgs e)
+        {
+            if (R2TextBox.TextLength == 0)
+            {
+                R2TextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
+                R2TextBox.Text = "10";
+            }
+        }
+
     }
 }
