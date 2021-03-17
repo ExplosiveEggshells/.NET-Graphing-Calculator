@@ -15,9 +15,31 @@ namespace RogersErwin_Assign4
         private int xMin = -100;
         private int xMax = 100;
         private int xInterval = 10;
+
         private int yMin = -100;
         private int yMax = 100;
         private int yInterval = 10;
+
+        private int linearM;
+        private int linearB;
+        private Color linearColor = Color.White;
+
+        private int quadraticA;
+        private int quadraticB;
+        private int quadraticC;
+        private Color quadraticColor = Color.Red;
+
+        private int cubicA;
+        private int cubicB;
+        private int cubicC;
+        private int cubicD;
+        private Color cubicColor = Color.Green;
+
+        private int circleK;
+        private int circleH;
+        private int circleR;
+        private Color circleColor = Color.Blue;
+
 
         private double aspect = 1.0;
 
@@ -76,30 +98,52 @@ namespace RogersErwin_Assign4
                 Point p1 = ConvertCartesianToPBPnt(-100, -100);
                 Point p2 = ConvertCartesianToPBPnt(100, 100);
 
-
                 g.DrawLine(pen, p1, p2);
             }
         }
-
+        
         private void GraphPB_Paint(object sender, PaintEventArgs e)
         {
             PaintGraph(sender, e);
         }
+        
+#region EVENT_HANDLERS
 
         private void LinearColorButton_Click(object sender, EventArgs e)
         {
             if (LinearColorDialog.ShowDialog() != DialogResult.Cancel)
             {
-                // linearGraph color change to selected color
+                linearColor = LinearColorDialog.Color;
+                LogRichTextBox.AppendText(string.Format("\nLinear: {0}", linearColor));
             }
        
         }
-
+        private void LinearButton_Click(object sender, EventArgs e)
+        {
+            if (MTextBox.TextLength != 0 && BTextBox.TextLength != 0)
+            {
+                linearM = Convert.ToInt32(MTextBox.Text);
+                linearB = Convert.ToInt32(BTextBox.Text);
+                LogRichTextBox.AppendText(string.Format("\ny = {0}x + {1}", linearM, linearB));
+            }
+        }
         private void QuadColorButton_Click(object sender, EventArgs e)
         {
             if (QuadColorDialog.ShowDialog() != DialogResult.Cancel)
             {
-                // QuadraticGraph color change to selected color
+                quadraticColor = QuadColorDialog.Color;
+                LogRichTextBox.AppendText(string.Format("\nQuadratic: {0}", quadraticColor));
+
+            }
+        }
+        private void QuadButton_Click(object sender, EventArgs e)
+        {
+            if (AQuadTextBox.TextLength != 0 && BQuadTextBox.TextLength != 0 && CQuadTextBox.TextLength != 0)
+            {
+                quadraticA = Convert.ToInt32(AQuadTextBox.Text);
+                quadraticB = Convert.ToInt32(BQuadTextBox.Text);
+                quadraticC = Convert.ToInt32(CQuadTextBox.Text);
+                LogRichTextBox.AppendText(string.Format("\ny = {0}x\xB2 + {1}x + {2}", quadraticA, quadraticB, quadraticC));
             }
         }
 
@@ -107,18 +151,59 @@ namespace RogersErwin_Assign4
         {
             if (CubicColorDialog.ShowDialog() != DialogResult.Cancel)
             {
-                // CubicGraph color change to selected color
+                cubicColor = CubicColorDialog.Color;
+                LogRichTextBox.AppendText(string.Format("\nCubic: {0}", cubicColor));
+
             }
         }
-
+        private void CubicButton_Click(object sender, EventArgs e)
+        {
+            if (ACubicTextBox.TextLength != 0 && BCubicTextBox.TextLength != 0 && CCubicTextBox.TextLength != 0 && DCubicTextBox.TextLength != 0)
+            {
+                cubicA = Convert.ToInt32(ACubicTextBox.Text);
+                cubicB = Convert.ToInt32(BCubicTextBox.Text);
+                cubicC = Convert.ToInt32(CCubicTextBox.Text);
+                cubicD = Convert.ToInt32(DCubicTextBox.Text);
+                LogRichTextBox.AppendText(string.Format("\ny = {0}x\xB3 + {1}x\xB2 + {2}x + {3}", cubicA, cubicB, cubicC, cubicD));
+            }
+        }
         private void CircleColorButton_Click(object sender, EventArgs e)
         {
             if (CircleColorDialog.ShowDialog() != DialogResult.Cancel)
             {
-                // CircleGraph color change to selected color
+                circleColor = CircleColorDialog.Color;
+                LogRichTextBox.AppendText(string.Format("\nCircle: {0}", circleColor));
             }
         }
 
+        private void CircleButton_Click(object sender, EventArgs e)
+        {
+            if (HTextBox.TextLength != 0 && KTextBox.TextLength != 0 && R2TextBox.TextLength != 0)
+            {
+                circleH = Convert.ToInt32(HTextBox.Text);
+                circleK = Convert.ToInt32(KTextBox.Text);
+                circleR = Convert.ToInt32(R2TextBox.Text);
+
+                LogRichTextBox.AppendText(string.Format("\n(x - {0})\xB2 + (y - {1})\xB2 = {2}\xB2", circleH, circleK, circleR));
+            }
+        }
+
+        private void CoordinatesButton_Click(object sender, EventArgs e)
+        {
+            xMin = Convert.ToInt32(XMinNumericUpDown.Value);
+            xMax = Convert.ToInt32(XMaxNumericUpDown.Value);
+            xInterval = Convert.ToInt32(XIntervalNumericUpDown.Value);
+
+            yMin = Convert.ToInt32(YMinNumericUpDown.Value);
+            yMax = Convert.ToInt32(YMinNumericUpDown.Value);
+            yInterval = Convert.ToInt32(YIntervalNumericUpDown.Value);
+
+            LogRichTextBox.AppendText(
+                string.Format("\nxMin: {0}\nxMax: {1}\nxInt: {2}\nyMin: {3}\nyMax: {4}\nyInt: {5}",
+                    xMin, xMax, xInterval, yMin, yMax, yInterval)
+                );
+
+        }
         private void MTextBox_Enter(object sender, EventArgs e)
         {
             MTextBox.Clear();
@@ -279,6 +364,11 @@ namespace RogersErwin_Assign4
                 R2TextBox.Text = "10";
             }
         }
-
+        private void LogRichTextBox_TextChanged(object sender, EventArgs e)
+        {
+            LogRichTextBox.SelectionStart = LogRichTextBox.Text.Length;
+            LogRichTextBox.ScrollToCaret();
+        }
     }
+    #endregion
 }
