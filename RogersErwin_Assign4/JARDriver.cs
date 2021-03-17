@@ -14,7 +14,31 @@ namespace RogersErwin_Assign4
         private PictureBox graphPB;
         private RichTextBox outputRtb;
 
-        private int samplingSize = 50;
+        private int linearM;
+        private int linearB;
+        private Color linearColor = Color.White;
+        private bool linearPlotted = false;
+
+        private int quadraticA;
+        private int quadraticB;
+        private int quadraticC;
+        private Color quadraticColor = Color.Red;
+        private bool quadraticPlotted = false;
+
+        private int cubicA;
+        private int cubicB;
+        private int cubicC;
+        private int cubicD;
+        private Color cubicColor = Color.Green;
+        private bool cubicPlotted = false;
+
+        private int circleK;
+        private int circleH;
+        private int circleR;
+        private Color circleColor = Color.Blue;
+        private bool circlePlotted = false;
+
+        private int samplingSize = 100;
         private int SAMPLE_ANGLES_DELTA = 5;
 
         public JARDriver(ref GraphParamsObj graphParams, ref PictureBox graphPB, ref RichTextBox outputRtb)
@@ -119,7 +143,7 @@ namespace RogersErwin_Assign4
             List<Point> samples = new List<Point>();
             for (float i = 0; i < pipi; i += delta)
             {
-                PointF pnt = new PointF((float)Math.Cos((double)i) * r, (float)Math.Sin((double)i) * r);
+                PointF pnt = new PointF(((float)Math.Cos((double)i) * r) + circleH, ((float)Math.Sin((double)i) * r) + circleK);
                 samples.Add(CartesianToUIPoint(pnt));
             }
 
@@ -151,7 +175,7 @@ namespace RogersErwin_Assign4
         {
             for (int i = 0; i < points.Length; i++)
             {
-                if (points[i].Y < gParms.YMax && points[i].Y > gParms.YMin)
+                if (points[i].Y > 0 && points[i].Y < graphPB.Height)
                 {
                     // If any point is between the min and max y, points is in scope.
                     return true;
@@ -159,13 +183,13 @@ namespace RogersErwin_Assign4
 
                 if (i != 0)
                 {
-                    if (points[i-1].Y > gParms.YMax && points[i].Y < gParms.YMax)
+                    if (points[i - 1].Y < 0 && points[i].Y > 0)
                     {
                         // If the previous point is ever above YMax and but the current point is at all below YMax, points is in scope.
                         return true;
                     }
 
-                    if (points[i-1].Y < gParms.YMin && points[i].Y > gParms.YMin)
+                    if (points[i - 1].Y > graphPB.Height && points[i].Y < graphPB.Height)
                     {
                         // If the previous point is ever below YMin, but the current point is at all above YMin, points is in scope.
                         return true;
@@ -186,42 +210,67 @@ namespace RogersErwin_Assign4
             {
                 PaintAxis(g, pen);
                 PaintTicks(g, pen);
-                pen.Color = Color.White;
 
-                bool status;
-                Point[] line = SampleLinear(-1, 3, out status);
                 List<int> samplePositions = GetSamplePositions();
 
-                if (status)
+                pen.Width = 1.5f;
+                if (linearPlotted)
                 {
-                    g.DrawLine(pen, line[0], line[1]);
-                } else
-                {
-                    outputRtb.Text = String.Format("Linear Equation y={0}x+{1} falls outside of window scope!", -1, 3);
+                    bool linearStatus;
+                    Point[] line = SampleLinear(linearM, linearB, out linearStatus);
+                    if (linearStatus)
+                    {
+                        pen.Color = linearColor;
+                        g.DrawLine(pen, line[0], line[1]);
+                    }
+                    else
+                    {
+                        outputRtb.Text = String.Format("Linear Equation y={0}x+{1} falls outside of window scope!", linearM, linearB);
+                    }
                 }
 
-                Point[] quad = SampleQuadratic(samplePositions, 2, -5, 3);
-                if (CheckScopeOnCurve(quad))
+                if (quadraticPlotted)
                 {
-                    g.DrawCurve(pen, quad);
-                }
-                else
-                {
-                    outputRtb.AppendText(String.Format("Quadratic Equation y={0}x^2+{1}x+{2} falls outside of window scope!", 2, 0, 3));
-                }
-
-                Point[] cubic = SampleCubic(samplePositions, 1, 0, 0, 0);
-                if (CheckScopeOnCurve(cubic))
-                {
-                    g.DrawCurve(pen, cubic);
-                }
-                else
-                {
-                    outputRtb.AppendText(String.Format("Cubic Equation y={0}x^3+{1}x^2+{2}x+{3} falls outside of window scope!", 1, 1, 1, 0));
+                    Point[] quad = SampleQuadratic(samplePositions, quadraticA, quadraticB, quadraticC);
+                    if (CheckScopeOnCurve(quad))
+                    {
+                        pen.Color = quadraticColor;
+                        g.DrawCurve(pen, quad);
+                    }
+                    else
+                    {
+                        outputRtb.AppendText(String.Format("Quadratic Equation y={0}x^2+{1}x+{2} falls outside of window scope!", quadraticA, quadraticB, quadraticC));
+                    }
                 }
 
-                Point[] circle = SampleCircle(1, 1, 5);
-                g.DrawCurve(pen, circle);
+                if (cubicPlotted)
+                {
+                    Point[] cubic = SampleCubic(samplePositions, cubicA, cubicB, cubicC, cubicD);
+                    if (CheckScopeOnCurve(cubic))
+                    {
+                        pen.Color = cubicColor;
+                        g.DrawCurve(pen, cubic);
+                    }
+                    else
+                    {
+                        outputRtb.AppendText(String.Format("Cubic Equation y={0}x^3+{1}x^2+{2}x+{3} falls outside of window scope!", cubicA, cubicB, cubicC, cubicD));
+                    }
+                }
+
+
+                if (circlePlotted)
+                {
+                    Point[] circle = SampleCircle(circleH, circleK, circleR);
+                    if (CheckScopeOnCurve(circle))
+                    {
+                        pen.Color = circleColor;
+                        g.DrawCurve(pen, circle);
+                    }
+                    else
+                    {
+                        outputRtb.AppendText(String.Format("Circle Equation (x+{0})^2+(y+{1})^2={2}^2 falls outside of window scope!", circleH, circleK, circleR));
+                    }
+                }
             }
         }
 
@@ -293,6 +342,44 @@ namespace RogersErwin_Assign4
             }
         }
 
+        public void SetLinear(int linearM, int linearB)
+        {
+            this.linearM = linearM;
+            this.linearB = linearB;
+            linearPlotted = true;
+        }
+
+        public void SetQuadratic(int quadA, int quadB, int quadC)
+        {
+            quadraticA = quadA;
+            quadraticB = quadB;
+            quadraticC = quadC;
+            quadraticPlotted = true;
+        }
+
+        public void SetCubic(int cubicA, int cubicB, int cubicC, int cubicD)
+        {
+            this.cubicA = cubicA;
+            this.cubicB = cubicB;
+            this.cubicC = cubicC;
+            this.cubicD = cubicD;
+            cubicPlotted = true;
+        }
+
+        public void SetCircle(int circleH, int circleK, int circleR)
+        {
+            this.circleH = circleH;
+            this.circleK = circleK;
+            this.circleR = circleR;
+            circlePlotted = true;
+        }
+
         public int SampleSize { get { return samplingSize; } set { samplingSize = value; } }
+
+        public Color LinearColor { set { linearColor = value; } }
+        public Color QuadraticColor { set { quadraticColor = value; } }
+        public Color CubicColor { set { cubicColor = value; } }
+        public Color CircleColor { set { circleColor = value; } }
+
     }
 }
