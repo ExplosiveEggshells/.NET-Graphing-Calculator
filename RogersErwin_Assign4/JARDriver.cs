@@ -1,4 +1,22 @@
-﻿using System;
+﻿/*
+ * NAME: JARDriver.cs
+ * AUTHOR: Jake Rogers (z1826513)
+ * 
+ * This file contains all of the logic for drawing equations on the PictureBox.
+ * This was all separated out for the purpose of preventing merge conflicts.
+ * 
+ * In order to get points to paint on the window, a 'sampling' method was used.
+ * This essentially means that a variable number of x-positions are picked between
+ * the xMinimum and the xMaximum, and those values of paired with their corresponding
+ * y value for that equation.
+ * 
+ * Then, those paired values are put into points and returned as an array to either be
+ * used in a DrawLine or DrawCurve.
+ * 
+ * A slight exception is that SampleCircle samples a fixed number of points at equal
+ * angles along the arc of the arithemetic circle, rather than picking x-values.
+ */
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -39,7 +57,7 @@ namespace RogersErwin_Assign4
         private bool circlePlotted = false;
 
         private int samplingSize = 100;
-        private int SAMPLE_ANGLES_DELTA = 5;
+        private int SAMPLE_ANGLES_DELTA = 5;            // Step-size to use when sampling points for the circle equation.
 
         public JARDriver(ref GraphParamsObj graphParams, ref PictureBox graphPB, ref RichTextBox outputRtb)
         {
@@ -59,7 +77,7 @@ namespace RogersErwin_Assign4
          * It is entirely possible for a Point returned by this function to have a negative value for x or y,
          * meaning that it would be off screen. This is both okay and expected.
          */
-        public Point CartesianToUIPoint(Point p)
+        private Point CartesianToUIPoint(Point p)
         {
             /*
              * The following two calculations essentially do the same thing, but for X and Y. Here's what happens
@@ -77,7 +95,10 @@ namespace RogersErwin_Assign4
             return p;
         }
 
-        public Point CartesianToUIPoint(PointF p)
+        /*
+         * Same as above, but works with float Points. (Used with circle sampling for bonus precision)
+         */
+        private Point CartesianToUIPoint(PointF p)
         {
             Point newP = new Point();
             newP.X = (int)((p.X - (float)gParms.XMin) / ((float)gParms.XMax - (float)gParms.XMin) * (float)graphPB.Width);
@@ -86,7 +107,39 @@ namespace RogersErwin_Assign4
             return newP;
         }
 
-        public Point[] SampleLinear(int m, int b, out bool status)
+        // -----===== SAMPLING =====----- //
+
+        /*
+         * Returns a list of x-positions that should be sampled between xMin and xMax. 
+         */
+        private List<int> GetSamplePositions()
+        {
+            int adjustedSampleSize = Math.Min(samplingSize, gParms.XMax - gParms.XMin);         // If the sampling size is greater than the width of the viewing window, new sample size is that width.
+            adjustedSampleSize = Math.Max(adjustedSampleSize, 2);                               // At the very least, have two samples.
+
+            int sampleInterval = (gParms.XMax - gParms.XMin) / adjustedSampleSize;
+            sampleInterval = Math.Max(sampleInterval, 1);
+
+            List<int> xSamples = new List<int>();
+            for (int i = 0; i < adjustedSampleSize; i++)
+            {
+                int xPos = (i * sampleInterval) + gParms.XMin;
+                xSamples.Add(xPos);
+            }
+
+            xSamples.Insert(0, gParms.XMin);                                                          // Adjust the first xPos to be exactly the xMin
+            xSamples.Add(gParms.XMax);
+
+            return xSamples;
+        }
+
+        /*
+         * Returns two points which are a linear sampling of y at xMin and xMax.
+         * 
+         * status will be true if the linear equation falls within scope, false
+         * if not.
+         */
+        private Point[] SampleLinear(int m, int b, out bool status)
         {
             Point[] samples = new Point[2];
 
@@ -112,7 +165,11 @@ namespace RogersErwin_Assign4
             return samples;
         }
 
-        public Point[] SampleQuadratic(List<int> samplePositions, int a, int b, int c)
+        /*
+         * Returns a variable number of points which are a quadratic sampling of
+         * y at various positions between xMin and xMax
+         */
+        private Point[] SampleQuadratic(List<int> samplePositions, int a, int b, int c)
         {
             List<Point> DrawPoints = new List<Point>();
             foreach (int xPos in samplePositions)
@@ -124,7 +181,10 @@ namespace RogersErwin_Assign4
             return DrawPoints.ToArray<Point>();
         }
 
-        public Point[] SampleCubic(List<int> samplePositions, int a, int b, int c, int d)
+        /*
+         * Same as above, but for Cubics.
+         */
+        private Point[] SampleCubic(List<int> samplePositions, int a, int b, int c, int d)
         {
             List<Point> DrawPoints = new List<Point>();
             foreach (int xPos in samplePositions)
@@ -136,7 +196,16 @@ namespace RogersErwin_Assign4
             return DrawPoints.ToArray<Point>();
         }
 
-        public Point[] SampleCircle(int h, int k, int r)
+        /*
+         * Returns (360 / SAMPLE_ANGLE_DELTA) number of points which are a circular sampling
+         * of y at every 5 degrees of rotation around the circle's edge.
+         * 
+         * Note: Circles are sampled using trigonometry to find the points, and drawn as a
+         * curve of points instead of using the DrawEllipse function. This is done so that
+         * it is easier to determine whether or not the circle is exactly within scope
+         * or not.
+         */
+        private Point[] SampleCircle(int h, int k, int r)
         {
             float delta = (float)(((double)SAMPLE_ANGLES_DELTA * Math.PI) / 180);
             float pipi = (float)(Math.PI * 2.0);
@@ -150,27 +219,10 @@ namespace RogersErwin_Assign4
             return samples.ToArray();
         }
 
-        private List<int> GetSamplePositions()
-        {
-            int adjustedSampleSize = Math.Min(samplingSize, gParms.XMax - gParms.XMin);         // If the sampling size is greater than the width of the viewing window, new sample size is that width.
-            adjustedSampleSize = Math.Max(adjustedSampleSize, 2);                               // At the very least, have two samples.
-
-            int sampleInterval = (gParms.XMax - gParms.XMin) / adjustedSampleSize;
-            sampleInterval = Math.Max(sampleInterval, 1);
-
-            List<int> xSamples = new List<int>();
-            for (int i = 0; i < adjustedSampleSize; i++)
-            {
-                int xPos = (i * sampleInterval) + gParms.XMin;
-                xSamples.Add(xPos);
-            }
-
-            xSamples.Insert(0, gParms.XMin);                                                          // Adjust the first xPos to be exactly the xMin
-            xSamples.Add(gParms.XMax);
-
-            return xSamples;
-        }
-
+        /*
+         * Given an array of UI points, this function returns true if this function
+         * would appear anywhere on the drawing field, and false if not.
+         */
         private bool CheckScopeOnCurve(Point[] points)
         {
             for (int i = 0; i < points.Length; i++)
@@ -202,6 +254,11 @@ namespace RogersErwin_Assign4
 
         // -----===== PAINTING =====----- //
 
+        /*
+         * Directed to immediately by PaintPB_Graph in Form1.cs; this is called
+         * each time GraphPB is refreshed. Calls various functions to get
+         * Points of the four equations and draws them if they are valid.
+         */
         public void PaintGraph(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -211,19 +268,21 @@ namespace RogersErwin_Assign4
                 PaintAxis(g, pen);
                 PaintTicks(g, pen);
 
+                // Get X-Positions positions to sample.
                 List<int> samplePositions = GetSamplePositions();
 
                 pen.Width = 1.5f;
-                if (linearPlotted)
+
+                if (linearPlotted)  // If the plot linear button was hit at least once...
                 {
                     bool linearStatus;
-                    Point[] line = SampleLinear(linearM, linearB, out linearStatus);
-                    if (linearStatus)
+                    Point[] line = SampleLinear(linearM, linearB, out linearStatus);    // Get sampled Points.
+                    if (linearStatus)                                                   // If it falls in scope..
                     {
                         pen.Color = linearColor;
-                        g.DrawLine(pen, line[0], line[1]);
+                        g.DrawLine(pen, line[0], line[1]);                              // Draw the line.
                     }
-                    else
+                    else                                                                // Otherwise, print scope warning.
                     {
                         outputRtb.Text = String.Format("Linear Equation y={0}x+{1} falls outside of window scope!", linearM, linearB);
                     }
@@ -295,6 +354,9 @@ namespace RogersErwin_Assign4
             g.DrawLine(pen, westPoint, eastPoint);
         }
 
+        /*
+         * Paints in the tick marks on both the x and y axes.
+         */
         private void PaintTicks(Graphics g, Pen pen)
         {
             pen.Color = Color.MediumVioletRed;
@@ -342,6 +404,11 @@ namespace RogersErwin_Assign4
             }
         }
 
+        /*
+         * This, and the following 'Set' methods are used to
+         * update their respective equations with values found in the 
+         * user-input fields.
+         */
         public void SetLinear(int linearM, int linearB)
         {
             this.linearM = linearM;
@@ -374,8 +441,10 @@ namespace RogersErwin_Assign4
             circlePlotted = true;
         }
 
-        public int SampleSize { get { return samplingSize; } set { samplingSize = value; } }
+        
+        // -----===== PROPERTIES =====-----
 
+        public int SampleSize { get { return samplingSize; } set { samplingSize = value; } }
         public Color LinearColor { set { linearColor = value; } }
         public Color QuadraticColor { set { quadraticColor = value; } }
         public Color CubicColor { set { cubicColor = value; } }
