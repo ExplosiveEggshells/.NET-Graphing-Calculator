@@ -42,6 +42,8 @@
             this.yMinText = new System.Windows.Forms.TextBox();
             this.yMaxText = new System.Windows.Forms.TextBox();
             this.yIntText = new System.Windows.Forms.TextBox();
+            this.samplingTrack = new System.Windows.Forms.TrackBar();
+            this.samplingText = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.GraphPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xMinTrack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xMaxTrack)).BeginInit();
@@ -49,6 +51,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.yMinTrack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yMaxTrack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YIntTrack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.samplingTrack)).BeginInit();
             this.SuspendLayout();
             // 
             // GraphPB
@@ -76,7 +79,7 @@
             this.xMinTrack.Minimum = -100;
             this.xMinTrack.Name = "xMinTrack";
             this.xMinTrack.Size = new System.Drawing.Size(160, 45);
-            this.xMinTrack.TabIndex = 2;
+            this.xMinTrack.TabIndex = 0;
             this.xMinTrack.TickFrequency = 10;
             this.xMinTrack.Value = -10;
             this.xMinTrack.Scroll += new System.EventHandler(this.XMinTrack_Scroll);
@@ -85,8 +88,10 @@
             // 
             this.xMinText.Location = new System.Drawing.Point(31, 421);
             this.xMinText.Name = "xMinText";
+            this.xMinText.ReadOnly = true;
             this.xMinText.Size = new System.Drawing.Size(100, 20);
             this.xMinText.TabIndex = 3;
+            this.xMinText.TabStop = false;
             this.xMinText.Text = "-10";
             this.xMinText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -97,7 +102,7 @@
             this.xMaxTrack.Minimum = -100;
             this.xMaxTrack.Name = "xMaxTrack";
             this.xMaxTrack.Size = new System.Drawing.Size(160, 45);
-            this.xMaxTrack.TabIndex = 2;
+            this.xMaxTrack.TabIndex = 1;
             this.xMaxTrack.TickFrequency = 10;
             this.xMaxTrack.Value = 10;
             this.xMaxTrack.Scroll += new System.EventHandler(this.XMaxTrack_Scroll);
@@ -106,8 +111,10 @@
             // 
             this.xMaxText.Location = new System.Drawing.Point(31, 474);
             this.xMaxText.Name = "xMaxText";
+            this.xMaxText.ReadOnly = true;
             this.xMaxText.Size = new System.Drawing.Size(100, 20);
             this.xMaxText.TabIndex = 3;
+            this.xMaxText.TabStop = false;
             this.xMaxText.Text = "10";
             this.xMaxText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -127,8 +134,10 @@
             // 
             this.xIntText.Location = new System.Drawing.Point(31, 527);
             this.xIntText.Name = "xIntText";
+            this.xIntText.ReadOnly = true;
             this.xIntText.Size = new System.Drawing.Size(100, 20);
             this.xIntText.TabIndex = 3;
+            this.xIntText.TabStop = false;
             this.xIntText.Text = "10";
             this.xIntText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -139,7 +148,7 @@
             this.yMinTrack.Minimum = -100;
             this.yMinTrack.Name = "yMinTrack";
             this.yMinTrack.Size = new System.Drawing.Size(160, 45);
-            this.yMinTrack.TabIndex = 2;
+            this.yMinTrack.TabIndex = 3;
             this.yMinTrack.TickFrequency = 10;
             this.yMinTrack.Value = -10;
             this.yMinTrack.Scroll += new System.EventHandler(this.YMinTrack_Scroll);
@@ -151,7 +160,7 @@
             this.yMaxTrack.Minimum = -100;
             this.yMaxTrack.Name = "yMaxTrack";
             this.yMaxTrack.Size = new System.Drawing.Size(160, 45);
-            this.yMaxTrack.TabIndex = 2;
+            this.yMaxTrack.TabIndex = 4;
             this.yMaxTrack.TickFrequency = 10;
             this.yMaxTrack.Value = 10;
             this.yMaxTrack.Scroll += new System.EventHandler(this.YMaxTrack_Scroll);
@@ -163,7 +172,7 @@
             this.YIntTrack.Minimum = 1;
             this.YIntTrack.Name = "YIntTrack";
             this.YIntTrack.Size = new System.Drawing.Size(160, 45);
-            this.YIntTrack.TabIndex = 2;
+            this.YIntTrack.TabIndex = 5;
             this.YIntTrack.TickFrequency = 10;
             this.YIntTrack.Value = 10;
             this.YIntTrack.Scroll += new System.EventHandler(this.YIntTrack_Scroll);
@@ -172,8 +181,10 @@
             // 
             this.yMinText.Location = new System.Drawing.Point(197, 421);
             this.yMinText.Name = "yMinText";
+            this.yMinText.ReadOnly = true;
             this.yMinText.Size = new System.Drawing.Size(100, 20);
             this.yMinText.TabIndex = 3;
+            this.yMinText.TabStop = false;
             this.yMinText.Text = "-10";
             this.yMinText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -181,8 +192,10 @@
             // 
             this.yMaxText.Location = new System.Drawing.Point(197, 474);
             this.yMaxText.Name = "yMaxText";
+            this.yMaxText.ReadOnly = true;
             this.yMaxText.Size = new System.Drawing.Size(100, 20);
             this.yMaxText.TabIndex = 3;
+            this.yMaxText.TabStop = false;
             this.yMaxText.Text = "10";
             this.yMaxText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -190,10 +203,35 @@
             // 
             this.yIntText.Location = new System.Drawing.Point(197, 527);
             this.yIntText.Name = "yIntText";
+            this.yIntText.ReadOnly = true;
             this.yIntText.Size = new System.Drawing.Size(100, 20);
             this.yIntText.TabIndex = 3;
+            this.yIntText.TabStop = false;
             this.yIntText.Text = "10";
             this.yIntText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // samplingTrack
+            // 
+            this.samplingTrack.Location = new System.Drawing.Point(544, 394);
+            this.samplingTrack.Maximum = 100;
+            this.samplingTrack.Minimum = 2;
+            this.samplingTrack.Name = "samplingTrack";
+            this.samplingTrack.Size = new System.Drawing.Size(160, 45);
+            this.samplingTrack.TabIndex = 3;
+            this.samplingTrack.TickFrequency = 10;
+            this.samplingTrack.Value = 2;
+            this.samplingTrack.Scroll += new System.EventHandler(this.SampleTrack_Scroll);
+            // 
+            // samplingText
+            // 
+            this.samplingText.Location = new System.Drawing.Point(575, 421);
+            this.samplingText.Name = "samplingText";
+            this.samplingText.ReadOnly = true;
+            this.samplingText.Size = new System.Drawing.Size(100, 20);
+            this.samplingText.TabIndex = 3;
+            this.samplingText.TabStop = false;
+            this.samplingText.Text = "-10";
+            this.samplingText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
@@ -205,12 +243,14 @@
             this.Controls.Add(this.xIntText);
             this.Controls.Add(this.yMaxText);
             this.Controls.Add(this.xMaxText);
+            this.Controls.Add(this.samplingText);
             this.Controls.Add(this.yMinText);
             this.Controls.Add(this.xMinText);
             this.Controls.Add(this.YIntTrack);
             this.Controls.Add(this.xIntTrack);
             this.Controls.Add(this.yMaxTrack);
             this.Controls.Add(this.xMaxTrack);
+            this.Controls.Add(this.samplingTrack);
             this.Controls.Add(this.yMinTrack);
             this.Controls.Add(this.xMinTrack);
             this.Controls.Add(this.richTextBox1);
@@ -225,6 +265,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.yMinTrack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yMaxTrack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.YIntTrack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.samplingTrack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,6 +287,8 @@
         private System.Windows.Forms.TextBox yMinText;
         private System.Windows.Forms.TextBox yMaxText;
         private System.Windows.Forms.TextBox yIntText;
+        private System.Windows.Forms.TrackBar samplingTrack;
+        private System.Windows.Forms.TextBox samplingText;
     }
 }
 

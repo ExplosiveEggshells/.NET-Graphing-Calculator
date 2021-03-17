@@ -23,7 +23,7 @@ namespace RogersErwin_Assign4
 
         private void Initialize()
         {
-            graphParams = new GraphParamsObj(ref GraphPB, -10, 10, 10, -10, 10, 10);
+            graphParams = new GraphParamsObj(ref GraphPB, -10, 10, 1, -10, 10, 1);
             jarDriver = new JARDriver(ref graphParams, ref GraphPB, ref richTextBox1);
         }
 
@@ -88,6 +88,14 @@ namespace RogersErwin_Assign4
         {
             graphParams.YInterval = YIntTrack.Value;
             yIntText.Text = YIntTrack.Value.ToString();
+            GraphPB.Refresh();
+        }
+
+        private void SampleTrack_Scroll(object sender, EventArgs e)
+        {
+            TrackBar trackBar = sender as TrackBar;
+            jarDriver.SampleSize = trackBar.Value;
+            samplingText.Text = trackBar.Value.ToString();
             GraphPB.Refresh();
         }
     }
