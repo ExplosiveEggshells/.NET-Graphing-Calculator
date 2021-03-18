@@ -109,7 +109,7 @@
             this.GraphPB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.GraphPB.Location = new System.Drawing.Point(12, 12);
             this.GraphPB.Name = "GraphPB";
-            this.GraphPB.Size = new System.Drawing.Size(693, 344);
+            this.GraphPB.Size = new System.Drawing.Size(692, 346);
             this.GraphPB.TabIndex = 0;
             this.GraphPB.TabStop = false;
             this.GraphPB.Paint += new System.Windows.Forms.PaintEventHandler(this.GraphPB_Paint);
@@ -121,7 +121,7 @@
             this.LinearLabel.Location = new System.Drawing.Point(6, 16);
             this.LinearLabel.Name = "LinearLabel";
             this.LinearLabel.Size = new System.Drawing.Size(78, 18);
-            this.LinearLabel.TabIndex = 2;
+            this.LinearLabel.TabIndex = 9999;
             this.LinearLabel.Text = "Linear:";
             this.LinearLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.FunctionToolTip.SetToolTip(this.LinearLabel, "y = mx + b");
@@ -133,8 +133,8 @@
             this.MTextBox.Location = new System.Drawing.Point(139, 13);
             this.MTextBox.Name = "MTextBox";
             this.MTextBox.Size = new System.Drawing.Size(46, 20);
-            this.MTextBox.TabIndex = 3;
-            this.MTextBox.Text = "10";
+            this.MTextBox.TabIndex = 0;
+            this.MTextBox.Text = "0";
             this.MTextBox.Enter += new System.EventHandler(this.MTextBox_Enter);
             this.MTextBox.Leave += new System.EventHandler(this.MTextBox_Leave);
             // 
@@ -146,6 +146,7 @@
             this.CubicButton.Name = "CubicButton";
             this.CubicButton.Size = new System.Drawing.Size(45, 20);
             this.CubicButton.TabIndex = 6;
+            this.CubicButton.TabStop = false;
             this.CubicButton.Text = "Plot";
             this.CubicButton.UseVisualStyleBackColor = false;
             this.CubicButton.Click += new System.EventHandler(this.CubicButton_Click);
@@ -177,8 +178,8 @@
             this.BTextBox.Location = new System.Drawing.Point(211, 13);
             this.BTextBox.Name = "BTextBox";
             this.BTextBox.Size = new System.Drawing.Size(46, 20);
-            this.BTextBox.TabIndex = 9;
-            this.BTextBox.Text = "10";
+            this.BTextBox.TabIndex = 1;
+            this.BTextBox.Text = "0";
             this.BTextBox.Enter += new System.EventHandler(this.BTextBox_Enter);
             this.BTextBox.Leave += new System.EventHandler(this.BTextBox_Leave);
             // 
@@ -189,7 +190,7 @@
             this.QuadLabel.Location = new System.Drawing.Point(6, 38);
             this.QuadLabel.Name = "QuadLabel";
             this.QuadLabel.Size = new System.Drawing.Size(108, 18);
-            this.QuadLabel.TabIndex = 10;
+            this.QuadLabel.TabIndex = 9999;
             this.QuadLabel.Text = "Quadratic:";
             this.QuadLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.FunctionToolTip.SetToolTip(this.QuadLabel, "y = ax² + bx + c");
@@ -201,7 +202,7 @@
             this.CubicLabel.Location = new System.Drawing.Point(6, 60);
             this.CubicLabel.Name = "CubicLabel";
             this.CubicLabel.Size = new System.Drawing.Size(68, 18);
-            this.CubicLabel.TabIndex = 11;
+            this.CubicLabel.TabIndex = 9999;
             this.CubicLabel.Text = "Cubic:";
             this.CubicLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.FunctionToolTip.SetToolTip(this.CubicLabel, "y = ax³ + bx² + cx + d");
@@ -213,7 +214,7 @@
             this.CircleLabel.Location = new System.Drawing.Point(6, 82);
             this.CircleLabel.Name = "CircleLabel";
             this.CircleLabel.Size = new System.Drawing.Size(78, 18);
-            this.CircleLabel.TabIndex = 12;
+            this.CircleLabel.TabIndex = 9999;
             this.CircleLabel.Text = "Circle:";
             this.CircleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.FunctionToolTip.SetToolTip(this.CircleLabel, "(x - h)² + (y - k)² = r²");
@@ -235,8 +236,8 @@
             this.AQuadTextBox.Location = new System.Drawing.Point(139, 35);
             this.AQuadTextBox.Name = "AQuadTextBox";
             this.AQuadTextBox.Size = new System.Drawing.Size(46, 20);
-            this.AQuadTextBox.TabIndex = 14;
-            this.AQuadTextBox.Text = "10";
+            this.AQuadTextBox.TabIndex = 2;
+            this.AQuadTextBox.Text = "0";
             this.AQuadTextBox.Enter += new System.EventHandler(this.AQuadTextBox_Enter);
             this.AQuadTextBox.Leave += new System.EventHandler(this.AQuadTextBox_Leave);
             // 
@@ -257,8 +258,8 @@
             this.BQuadTextBox.Location = new System.Drawing.Point(211, 35);
             this.BQuadTextBox.Name = "BQuadTextBox";
             this.BQuadTextBox.Size = new System.Drawing.Size(46, 20);
-            this.BQuadTextBox.TabIndex = 16;
-            this.BQuadTextBox.Text = "10";
+            this.BQuadTextBox.TabIndex = 3;
+            this.BQuadTextBox.Text = "0";
             this.BQuadTextBox.Enter += new System.EventHandler(this.BQuadTextBox_Enter);
             this.BQuadTextBox.Leave += new System.EventHandler(this.BQuadTextBox_Leave);
             // 
@@ -269,8 +270,8 @@
             this.CQuadTextBox.Location = new System.Drawing.Point(287, 35);
             this.CQuadTextBox.Name = "CQuadTextBox";
             this.CQuadTextBox.Size = new System.Drawing.Size(46, 20);
-            this.CQuadTextBox.TabIndex = 18;
-            this.CQuadTextBox.Text = "10";
+            this.CQuadTextBox.TabIndex = 4;
+            this.CQuadTextBox.Text = "0";
             this.CQuadTextBox.Enter += new System.EventHandler(this.CQuadTextBox_Enter);
             this.CQuadTextBox.Leave += new System.EventHandler(this.CQuadTextBox_Leave);
             // 
@@ -301,8 +302,8 @@
             this.BCubicTextBox.Location = new System.Drawing.Point(211, 57);
             this.BCubicTextBox.Name = "BCubicTextBox";
             this.BCubicTextBox.Size = new System.Drawing.Size(46, 20);
-            this.BCubicTextBox.TabIndex = 20;
-            this.BCubicTextBox.Text = "10";
+            this.BCubicTextBox.TabIndex = 6;
+            this.BCubicTextBox.Text = "0";
             this.BCubicTextBox.Enter += new System.EventHandler(this.BCubicTextBox_Enter);
             this.BCubicTextBox.Leave += new System.EventHandler(this.BCubicTextBox_Leave);
             // 
@@ -333,8 +334,8 @@
             this.ACubicTextBox.Location = new System.Drawing.Point(139, 57);
             this.ACubicTextBox.Name = "ACubicTextBox";
             this.ACubicTextBox.Size = new System.Drawing.Size(46, 20);
-            this.ACubicTextBox.TabIndex = 23;
-            this.ACubicTextBox.Text = "10";
+            this.ACubicTextBox.TabIndex = 5;
+            this.ACubicTextBox.Text = "0";
             this.ACubicTextBox.Enter += new System.EventHandler(this.ACubicTextBox_Enter);
             this.ACubicTextBox.Leave += new System.EventHandler(this.ACubicTextBox_Leave);
             // 
@@ -345,8 +346,8 @@
             this.CCubicTextBox.Location = new System.Drawing.Point(287, 57);
             this.CCubicTextBox.Name = "CCubicTextBox";
             this.CCubicTextBox.Size = new System.Drawing.Size(46, 20);
-            this.CCubicTextBox.TabIndex = 24;
-            this.CCubicTextBox.Text = "10";
+            this.CCubicTextBox.TabIndex = 7;
+            this.CCubicTextBox.Text = "0";
             this.CCubicTextBox.Enter += new System.EventHandler(this.CCubicTextBox_Enter);
             this.CCubicTextBox.Leave += new System.EventHandler(this.CCubicTextBox_Leave);
             // 
@@ -367,8 +368,8 @@
             this.DCubicTextBox.Location = new System.Drawing.Point(363, 57);
             this.DCubicTextBox.Name = "DCubicTextBox";
             this.DCubicTextBox.Size = new System.Drawing.Size(46, 20);
-            this.DCubicTextBox.TabIndex = 26;
-            this.DCubicTextBox.Text = "10";
+            this.DCubicTextBox.TabIndex = 8;
+            this.DCubicTextBox.Text = "0";
             this.DCubicTextBox.Enter += new System.EventHandler(this.DCubicTextBox_Enter);
             this.DCubicTextBox.Leave += new System.EventHandler(this.DCubicTextBox_Leave);
             // 
@@ -379,8 +380,8 @@
             this.R2TextBox.Location = new System.Drawing.Point(287, 80);
             this.R2TextBox.Name = "R2TextBox";
             this.R2TextBox.Size = new System.Drawing.Size(46, 20);
-            this.R2TextBox.TabIndex = 32;
-            this.R2TextBox.Text = "10";
+            this.R2TextBox.TabIndex = 11;
+            this.R2TextBox.Text = "1";
             this.R2TextBox.Enter += new System.EventHandler(this.R2TextBox_Enter);
             this.R2TextBox.Leave += new System.EventHandler(this.R2TextBox_Leave);
             // 
@@ -401,8 +402,8 @@
             this.KTextBox.Location = new System.Drawing.Point(211, 80);
             this.KTextBox.Name = "KTextBox";
             this.KTextBox.Size = new System.Drawing.Size(46, 20);
-            this.KTextBox.TabIndex = 30;
-            this.KTextBox.Text = "10";
+            this.KTextBox.TabIndex = 10;
+            this.KTextBox.Text = "0";
             this.KTextBox.Enter += new System.EventHandler(this.KTextBox_Enter);
             this.KTextBox.Leave += new System.EventHandler(this.KTextBox_Leave);
             // 
@@ -423,8 +424,8 @@
             this.HTextBox.Location = new System.Drawing.Point(139, 80);
             this.HTextBox.Name = "HTextBox";
             this.HTextBox.Size = new System.Drawing.Size(46, 20);
-            this.HTextBox.TabIndex = 28;
-            this.HTextBox.Text = "10";
+            this.HTextBox.TabIndex = 9;
+            this.HTextBox.Text = "0";
             this.HTextBox.Enter += new System.EventHandler(this.HTextBox_Enter);
             this.HTextBox.Leave += new System.EventHandler(this.HTextBox_Leave);
             // 
@@ -446,6 +447,7 @@
             this.QuadButton.Name = "QuadButton";
             this.QuadButton.Size = new System.Drawing.Size(45, 20);
             this.QuadButton.TabIndex = 33;
+            this.QuadButton.TabStop = false;
             this.QuadButton.Text = "Plot";
             this.QuadButton.UseVisualStyleBackColor = false;
             this.QuadButton.Click += new System.EventHandler(this.QuadButton_Click);
@@ -458,6 +460,7 @@
             this.LinearButton.Name = "LinearButton";
             this.LinearButton.Size = new System.Drawing.Size(45, 20);
             this.LinearButton.TabIndex = 34;
+            this.LinearButton.TabStop = false;
             this.LinearButton.Text = "Plot";
             this.LinearButton.UseVisualStyleBackColor = false;
             this.LinearButton.Click += new System.EventHandler(this.LinearButton_Click);
@@ -470,6 +473,7 @@
             this.CircleButton.Name = "CircleButton";
             this.CircleButton.Size = new System.Drawing.Size(45, 20);
             this.CircleButton.TabIndex = 35;
+            this.CircleButton.TabStop = false;
             this.CircleButton.Text = "Plot";
             this.CircleButton.UseVisualStyleBackColor = false;
             this.CircleButton.Click += new System.EventHandler(this.CircleButton_Click);
@@ -522,21 +526,16 @@
             this.XIntervalNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.XIntervalNumericUpDown.ForeColor = System.Drawing.SystemColors.Window;
             this.XIntervalNumericUpDown.Location = new System.Drawing.Point(81, 71);
-            this.XIntervalNumericUpDown.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             this.XIntervalNumericUpDown.Minimum = new decimal(new int[] {
-            500,
+            100,
             0,
             0,
             -2147483648});
             this.XIntervalNumericUpDown.Name = "XIntervalNumericUpDown";
             this.XIntervalNumericUpDown.Size = new System.Drawing.Size(69, 20);
-            this.XIntervalNumericUpDown.TabIndex = 2;
+            this.XIntervalNumericUpDown.TabIndex = 14;
             this.XIntervalNumericUpDown.Value = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
             0});
@@ -546,21 +545,16 @@
             this.XMaxNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.XMaxNumericUpDown.ForeColor = System.Drawing.SystemColors.Window;
             this.XMaxNumericUpDown.Location = new System.Drawing.Point(81, 45);
-            this.XMaxNumericUpDown.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             this.XMaxNumericUpDown.Minimum = new decimal(new int[] {
-            500,
+            100,
             0,
             0,
             -2147483648});
             this.XMaxNumericUpDown.Name = "XMaxNumericUpDown";
             this.XMaxNumericUpDown.Size = new System.Drawing.Size(69, 20);
-            this.XMaxNumericUpDown.TabIndex = 1;
+            this.XMaxNumericUpDown.TabIndex = 13;
             this.XMaxNumericUpDown.Value = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             0});
@@ -570,21 +564,16 @@
             this.XMinNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.XMinNumericUpDown.ForeColor = System.Drawing.SystemColors.Window;
             this.XMinNumericUpDown.Location = new System.Drawing.Point(81, 19);
-            this.XMinNumericUpDown.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             this.XMinNumericUpDown.Minimum = new decimal(new int[] {
-            500,
+            100,
             0,
             0,
             -2147483648});
             this.XMinNumericUpDown.Name = "XMinNumericUpDown";
             this.XMinNumericUpDown.Size = new System.Drawing.Size(69, 20);
-            this.XMinNumericUpDown.TabIndex = 0;
+            this.XMinNumericUpDown.TabIndex = 12;
             this.XMinNumericUpDown.Value = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             -2147483648});
@@ -637,21 +626,16 @@
             this.YIntervalNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.YIntervalNumericUpDown.ForeColor = System.Drawing.SystemColors.Window;
             this.YIntervalNumericUpDown.Location = new System.Drawing.Point(81, 71);
-            this.YIntervalNumericUpDown.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             this.YIntervalNumericUpDown.Minimum = new decimal(new int[] {
-            500,
+            100,
             0,
             0,
             -2147483648});
             this.YIntervalNumericUpDown.Name = "YIntervalNumericUpDown";
             this.YIntervalNumericUpDown.Size = new System.Drawing.Size(69, 20);
-            this.YIntervalNumericUpDown.TabIndex = 2;
+            this.YIntervalNumericUpDown.TabIndex = 17;
             this.YIntervalNumericUpDown.Value = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
             0});
@@ -661,21 +645,16 @@
             this.YMaxNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.YMaxNumericUpDown.ForeColor = System.Drawing.SystemColors.Window;
             this.YMaxNumericUpDown.Location = new System.Drawing.Point(81, 45);
-            this.YMaxNumericUpDown.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             this.YMaxNumericUpDown.Minimum = new decimal(new int[] {
-            500,
+            100,
             0,
             0,
             -2147483648});
             this.YMaxNumericUpDown.Name = "YMaxNumericUpDown";
             this.YMaxNumericUpDown.Size = new System.Drawing.Size(69, 20);
-            this.YMaxNumericUpDown.TabIndex = 1;
+            this.YMaxNumericUpDown.TabIndex = 16;
             this.YMaxNumericUpDown.Value = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             0});
@@ -685,21 +664,16 @@
             this.YMinNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.YMinNumericUpDown.ForeColor = System.Drawing.SystemColors.Window;
             this.YMinNumericUpDown.Location = new System.Drawing.Point(81, 19);
-            this.YMinNumericUpDown.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             this.YMinNumericUpDown.Minimum = new decimal(new int[] {
-            500,
+            100,
             0,
             0,
             -2147483648});
             this.YMinNumericUpDown.Name = "YMinNumericUpDown";
             this.YMinNumericUpDown.Size = new System.Drawing.Size(69, 20);
-            this.YMinNumericUpDown.TabIndex = 0;
+            this.YMinNumericUpDown.TabIndex = 15;
             this.YMinNumericUpDown.Value = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             -2147483648});
@@ -760,6 +734,7 @@
             this.CircleColorButton.Name = "CircleColorButton";
             this.CircleColorButton.Size = new System.Drawing.Size(50, 20);
             this.CircleColorButton.TabIndex = 39;
+            this.CircleColorButton.TabStop = false;
             this.CircleColorButton.Text = "Color";
             this.CircleColorButton.UseVisualStyleBackColor = false;
             this.CircleColorButton.Click += new System.EventHandler(this.CircleColorButton_Click);
@@ -772,6 +747,7 @@
             this.CubicColorButton.Name = "CubicColorButton";
             this.CubicColorButton.Size = new System.Drawing.Size(50, 20);
             this.CubicColorButton.TabIndex = 36;
+            this.CubicColorButton.TabStop = false;
             this.CubicColorButton.Text = "Color";
             this.CubicColorButton.UseVisualStyleBackColor = false;
             this.CubicColorButton.Click += new System.EventHandler(this.CubicColorButton_Click);
@@ -784,6 +760,7 @@
             this.LinearColorButton.Name = "LinearColorButton";
             this.LinearColorButton.Size = new System.Drawing.Size(50, 20);
             this.LinearColorButton.TabIndex = 38;
+            this.LinearColorButton.TabStop = false;
             this.LinearColorButton.Text = "Color";
             this.LinearColorButton.UseVisualStyleBackColor = false;
             this.LinearColorButton.Click += new System.EventHandler(this.LinearColorButton_Click);
@@ -796,6 +773,7 @@
             this.QuadColorButton.Name = "QuadColorButton";
             this.QuadColorButton.Size = new System.Drawing.Size(50, 20);
             this.QuadColorButton.TabIndex = 37;
+            this.QuadColorButton.TabStop = false;
             this.QuadColorButton.Text = "Color";
             this.QuadColorButton.UseVisualStyleBackColor = false;
             this.QuadColorButton.Click += new System.EventHandler(this.QuadColorButton_Click);
@@ -837,7 +815,7 @@
             this.LogRichTextBox.ReadOnly = true;
             this.LogRichTextBox.Size = new System.Drawing.Size(693, 122);
             this.LogRichTextBox.TabIndex = 41;
-            this.LogRichTextBox.Text = "Function results will be displayed here";
+            this.LogRichTextBox.Text = "Function results will be displayed here\n";
             this.LogRichTextBox.TextChanged += new System.EventHandler(this.LogRichTextBox_TextChanged);
             // 
             // label1
@@ -896,6 +874,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox GraphPB;
+
         private System.Windows.Forms.Label LinearLabel;
         private System.Windows.Forms.TextBox MTextBox;
         private System.Windows.Forms.Button CubicButton;
