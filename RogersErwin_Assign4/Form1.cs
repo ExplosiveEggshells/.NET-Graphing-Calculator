@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * NAME: Form1.cs
+ * AUTHOR: Jake Rogers (z1826513) John Erwin (z1856469)
+ * 
+ * This file contains the functions that build the form (Form1) and
+ * all the event handlers that are necessary to interact with the
+ * form. 
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,7 +50,7 @@ namespace RogersErwin_Assign4
          * Bounds integer x between -100 and 100 (inclusive). This is to be used on the
          * coefficient text fields.
          */
-        private int BoundCoefficient(int x) {
+private int BoundCoefficient(int x) {
             if (x > 100)
             {
                 LogRichTextBox.AppendText("WARNING: " + x + " is too large! Coefficient has been set to 100.\n");
@@ -78,9 +86,14 @@ namespace RogersErwin_Assign4
 
             return x;
         }
+
+        
         
 #region EVENT_HANDLERS
 
+        /**
+         * Handles the change of the color for the Linear function
+         */
         private void LinearColorButton_Click(object sender, EventArgs e)
         {
             if (LinearColorDialog.ShowDialog() != DialogResult.Cancel)
@@ -91,6 +104,10 @@ namespace RogersErwin_Assign4
                 GraphPB.Refresh();
             }
         }
+
+        /**
+         * Handles the updating of the linear function being drawn
+         */
         private void LinearButton_Click(object sender, EventArgs e)
         {
             if (MTextBox.TextLength != 0 && BTextBox.TextLength != 0)
@@ -104,6 +121,10 @@ namespace RogersErwin_Assign4
 
             }
         }
+
+        /**
+         * Handles the change of the color for the quadratic function
+         */
         private void QuadColorButton_Click(object sender, EventArgs e)
         {
             if (QuadColorDialog.ShowDialog() != DialogResult.Cancel)
@@ -114,6 +135,10 @@ namespace RogersErwin_Assign4
                 GraphPB.Refresh();
             }
         }
+
+        /**
+         * Handles the updating of the quadratic function being drawn
+         */
         private void QuadButton_Click(object sender, EventArgs e)
         {
             if (AQuadTextBox.TextLength != 0 && BQuadTextBox.TextLength != 0 && CQuadTextBox.TextLength != 0)
@@ -128,6 +153,9 @@ namespace RogersErwin_Assign4
             }
         }
 
+        /**
+         * Handles the change of the color for the cubic function
+         */
         private void CubicColorButton_Click(object sender, EventArgs e)
         {
             if (CubicColorDialog.ShowDialog() != DialogResult.Cancel)
@@ -138,6 +166,10 @@ namespace RogersErwin_Assign4
                 GraphPB.Refresh();
             }
         }
+
+        /**
+         * Handles the updating of the cubic function being drawn
+         */
         private void CubicButton_Click(object sender, EventArgs e)
         {
             if (ACubicTextBox.TextLength != 0 && BCubicTextBox.TextLength != 0 && CCubicTextBox.TextLength != 0 && DCubicTextBox.TextLength != 0)
@@ -152,6 +184,10 @@ namespace RogersErwin_Assign4
                 GraphPB.Refresh();
             }
         }
+
+        /**
+         * Handles the change of the color for the circle function
+         */
         private void CircleColorButton_Click(object sender, EventArgs e)
         {
             if (CircleColorDialog.ShowDialog() != DialogResult.Cancel)
@@ -163,6 +199,9 @@ namespace RogersErwin_Assign4
             }
         }
 
+        /**
+         * Handles the updating of the circle function being drawn
+         */
         private void CircleButton_Click(object sender, EventArgs e)
         {
             if (HTextBox.TextLength != 0 && KTextBox.TextLength != 0 && R2TextBox.TextLength != 0)
@@ -178,6 +217,9 @@ namespace RogersErwin_Assign4
             }
         }
 
+        /**
+         * Handles updating the coordinates that change what is visible on the PictureBox
+         */
         private void CoordinatesButton_Click(object sender, EventArgs e)
         {
             graphParams.XMin = Convert.ToInt32(XMinNumericUpDown.Value);
@@ -202,199 +244,64 @@ namespace RogersErwin_Assign4
 
             GraphPB.Refresh();
         }
-        private void MTextBox_Enter(object sender, EventArgs e)
+        /**
+         * Handles removing the format shadowing and setting the color to active text (White)
+         */
+        private void TextBox_Enter(object sender, EventArgs e)
         {
-            MTextBox.Clear();
-            MTextBox.ForeColor = Color.White;
+            TextBox textbox = (TextBox)sender;
+            textbox.Clear();
+            textbox.ForeColor = Color.White;
         }
-        private void MTextBox_Leave(object sender, EventArgs e)
+        private void TextBox_Leave(object sender, EventArgs e)
         {
-            if (MTextBox.TextLength == 0)
+            TextBox textbox = (TextBox)sender;
+            if (textbox.TextLength == 0)
             {
-                MTextBox.ForeColor = Color.FromArgb(255,100,80,100);
-                MTextBox.Text = "0";
+                textbox.ForeColor = Color.FromArgb(255,100,80,100);
+                textbox.Text = "0";
             }
-            MTextBox.Text = BoundCoefficient(Convert.ToInt32(MTextBox.Text)).ToString();
+            textbox.Text = BoundCoefficient(Convert.ToInt32(textbox.Text)).ToString();
         }
 
-        private void BTextBox_Enter(object sender, EventArgs e)
+        private void RTextBox_Leave(object sender, EventArgs e)
         {
-            BTextBox.Clear();
-            BTextBox.ForeColor = Color.White;
-        }
-        private void BTextBox_Leave(object sender, EventArgs e)
-        {
-            if (BTextBox.TextLength == 0)
+            TextBox textbox = (TextBox)sender;
+            if (textbox.TextLength == 0)
             {
-                BTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
-                BTextBox.Text = "0";
+                textbox.ForeColor = Color.FromArgb(255, 100, 80, 100);
+                textbox.Text = "1";
             }
-
-            BTextBox.Text = BoundCoefficient(Convert.ToInt32(BTextBox.Text)).ToString();
+            textbox.Text = BoundR2(Convert.ToInt32(textbox.Text)).ToString();
         }
 
-        private void AQuadTextBox_Enter(object sender, EventArgs e)
-        {
-            AQuadTextBox.Clear();
-            AQuadTextBox.ForeColor = Color.White;
-        }
-        private void AQuadTextBox_Leave(object sender, EventArgs e)
-        {
-            if (AQuadTextBox.TextLength == 0)
-            {
-                AQuadTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
-                AQuadTextBox.Text = "0";
-            }
-
-            AQuadTextBox.Text = BoundCoefficient(Convert.ToInt32(AQuadTextBox.Text)).ToString();
-        }
-
-        private void BQuadTextBox_Enter(object sender, EventArgs e)
-        {
-            BQuadTextBox.Clear();
-            BQuadTextBox.ForeColor = Color.White;
-        }
-        private void BQuadTextBox_Leave(object sender, EventArgs e)
-        {
-            if (BQuadTextBox.TextLength == 0)
-            {
-                BQuadTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
-                BQuadTextBox.Text = "0";
-            }
-
-            BQuadTextBox.Text = BoundCoefficient(Convert.ToInt32(BQuadTextBox.Text)).ToString();
-        }
-
-        private void CQuadTextBox_Enter(object sender, EventArgs e)
-        {
-            CQuadTextBox.Clear();
-            CQuadTextBox.ForeColor = Color.White;
-        }
-        private void CQuadTextBox_Leave(object sender, EventArgs e)
-        {
-            if (CQuadTextBox.TextLength == 0)
-            {
-                CQuadTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
-                CQuadTextBox.Text = "0";
-            }
-
-            CQuadTextBox.Text = BoundCoefficient(Convert.ToInt32(CQuadTextBox.Text)).ToString();
-        }
-        private void ACubicTextBox_Enter(object sender, EventArgs e)
-        {
-            ACubicTextBox.Clear();
-            ACubicTextBox.ForeColor = Color.White;
-        }
-        private void ACubicTextBox_Leave(object sender, EventArgs e)
-        {
-            if (ACubicTextBox.TextLength == 0)
-            {
-                ACubicTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
-                ACubicTextBox.Text = "0";
-            }
-
-            ACubicTextBox.Text = BoundCoefficient(Convert.ToInt32(ACubicTextBox.Text)).ToString();
-        }
-        private void BCubicTextBox_Enter(object sender, EventArgs e)
-        {
-            BCubicTextBox.Clear();
-            BCubicTextBox.ForeColor = Color.White;
-        }
-        private void BCubicTextBox_Leave(object sender, EventArgs e)
-        {
-            if (BCubicTextBox.TextLength == 0)
-            {
-                BCubicTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
-                BCubicTextBox.Text = "0";
-            }
-
-            BCubicTextBox.Text = BoundCoefficient(Convert.ToInt32(BCubicTextBox.Text)).ToString();
-        }
-        private void CCubicTextBox_Enter(object sender, EventArgs e)
-        {
-            CCubicTextBox.Clear();
-            CCubicTextBox.ForeColor = Color.White;
-        }
-        private void CCubicTextBox_Leave(object sender, EventArgs e)
-        {
-            if (CCubicTextBox.TextLength == 0)
-            {
-                CCubicTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
-                CCubicTextBox.Text = "0";
-            }
-
-            CCubicTextBox.Text = BoundCoefficient(Convert.ToInt32(CCubicTextBox.Text)).ToString();
-        }
-        private void DCubicTextBox_Enter(object sender, EventArgs e)
-        {
-            DCubicTextBox.Clear();
-            DCubicTextBox.ForeColor = Color.White;
-        }
-        private void DCubicTextBox_Leave(object sender, EventArgs e)
-        {
-            if (DCubicTextBox.TextLength == 0)
-            {
-                DCubicTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
-                DCubicTextBox.Text = "0";
-            }
-
-            DCubicTextBox.Text = BoundCoefficient(Convert.ToInt32(DCubicTextBox.Text)).ToString();
-        }
-        private void HTextBox_Enter(object sender, EventArgs e)
-        {
-            HTextBox.Clear();
-            HTextBox.ForeColor = Color.White;
-        }
-        private void HTextBox_Leave(object sender, EventArgs e)
-        {
-            if (HTextBox.TextLength == 0)
-            {
-                HTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
-                HTextBox.Text = "0";
-            }
-
-            HTextBox.Text = BoundCoefficient(Convert.ToInt32(HTextBox.Text)).ToString();
-        }
-        private void KTextBox_Enter(object sender, EventArgs e)
-        {
-            KTextBox.Clear();
-            KTextBox.ForeColor = Color.White;
-        }
-        private void KTextBox_Leave(object sender, EventArgs e)
-        {
-            if (KTextBox.TextLength == 0)
-            {
-                KTextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
-                KTextBox.Text = "0";
-            }
-
-            KTextBox.Text = BoundCoefficient(Convert.ToInt32(KTextBox.Text)).ToString();
-        }
-        private void R2TextBox_Enter(object sender, EventArgs e)
-        {
-            R2TextBox.Clear();
-            R2TextBox.ForeColor = Color.White;
-        }
-        private void R2TextBox_Leave(object sender, EventArgs e)
-        {
-            if (R2TextBox.TextLength == 0)
-            {
-                R2TextBox.ForeColor = Color.FromArgb(255, 100, 80, 100);
-                R2TextBox.Text = "1";
-            }
-
-            R2TextBox.Text = BoundR2(Convert.ToInt32(R2TextBox.Text)).ToString();
-        }
+        /**
+         * This function makes sure that when a new item is added to the Log, it scrolls down as items are added.
+         */
         private void LogRichTextBox_TextChanged(object sender, EventArgs e)
         {
             LogRichTextBox.SelectionStart = LogRichTextBox.Text.Length;
             LogRichTextBox.ScrollToCaret();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        /**
+         * This function makes sure that only numbers can be entered in the textbox forms
+         * 
+         * And it also ensures that a minus sign be placed once and at the begining of the TextBox
+         */
+        private void CleanUserInput_KeyPress(object sender, KeyPressEventArgs e)
         {
+            TextBox textbox = (TextBox)sender;
 
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '-') && (e.KeyChar != (char)8))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '-' && (textbox.Text.Contains('-') || textbox.SelectionStart != 0))
+            {
+                e.Handled = true;
+            }
         }
     }
-    #endregion
+#endregion
 }

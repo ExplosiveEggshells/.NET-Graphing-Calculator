@@ -135,8 +135,9 @@
             this.MTextBox.Size = new System.Drawing.Size(46, 20);
             this.MTextBox.TabIndex = 0;
             this.MTextBox.Text = "0";
-            this.MTextBox.Enter += new System.EventHandler(this.MTextBox_Enter);
-            this.MTextBox.Leave += new System.EventHandler(this.MTextBox_Leave);
+            this.MTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.MTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CleanUserInput_KeyPress);
+            this.MTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // CubicButton
             // 
@@ -180,8 +181,9 @@
             this.BTextBox.Size = new System.Drawing.Size(46, 20);
             this.BTextBox.TabIndex = 1;
             this.BTextBox.Text = "0";
-            this.BTextBox.Enter += new System.EventHandler(this.BTextBox_Enter);
-            this.BTextBox.Leave += new System.EventHandler(this.BTextBox_Leave);
+            this.BTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.BTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CleanUserInput_KeyPress);
+            this.BTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // QuadLabel
             // 
@@ -238,8 +240,9 @@
             this.AQuadTextBox.Size = new System.Drawing.Size(46, 20);
             this.AQuadTextBox.TabIndex = 2;
             this.AQuadTextBox.Text = "0";
-            this.AQuadTextBox.Enter += new System.EventHandler(this.AQuadTextBox_Enter);
-            this.AQuadTextBox.Leave += new System.EventHandler(this.AQuadTextBox_Leave);
+            this.AQuadTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.AQuadTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CleanUserInput_KeyPress);
+            this.AQuadTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // BQuadLabel
             // 
@@ -260,8 +263,9 @@
             this.BQuadTextBox.Size = new System.Drawing.Size(46, 20);
             this.BQuadTextBox.TabIndex = 3;
             this.BQuadTextBox.Text = "0";
-            this.BQuadTextBox.Enter += new System.EventHandler(this.BQuadTextBox_Enter);
-            this.BQuadTextBox.Leave += new System.EventHandler(this.BQuadTextBox_Leave);
+            this.BQuadTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.BQuadTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CleanUserInput_KeyPress);
+            this.BQuadTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // CQuadTextBox
             // 
@@ -272,8 +276,9 @@
             this.CQuadTextBox.Size = new System.Drawing.Size(46, 20);
             this.CQuadTextBox.TabIndex = 4;
             this.CQuadTextBox.Text = "0";
-            this.CQuadTextBox.Enter += new System.EventHandler(this.CQuadTextBox_Enter);
-            this.CQuadTextBox.Leave += new System.EventHandler(this.CQuadTextBox_Leave);
+            this.CQuadTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.CQuadTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CleanUserInput_KeyPress);
+            this.CQuadTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // CQuadLabel
             // 
@@ -304,8 +309,9 @@
             this.BCubicTextBox.Size = new System.Drawing.Size(46, 20);
             this.BCubicTextBox.TabIndex = 6;
             this.BCubicTextBox.Text = "0";
-            this.BCubicTextBox.Enter += new System.EventHandler(this.BCubicTextBox_Enter);
-            this.BCubicTextBox.Leave += new System.EventHandler(this.BCubicTextBox_Leave);
+            this.BCubicTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.BCubicTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CleanUserInput_KeyPress);
+            this.BCubicTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // CCubicLabel
             // 
@@ -336,8 +342,9 @@
             this.ACubicTextBox.Size = new System.Drawing.Size(46, 20);
             this.ACubicTextBox.TabIndex = 5;
             this.ACubicTextBox.Text = "0";
-            this.ACubicTextBox.Enter += new System.EventHandler(this.ACubicTextBox_Enter);
-            this.ACubicTextBox.Leave += new System.EventHandler(this.ACubicTextBox_Leave);
+            this.ACubicTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.ACubicTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CleanUserInput_KeyPress);
+            this.ACubicTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // CCubicTextBox
             // 
@@ -348,8 +355,9 @@
             this.CCubicTextBox.Size = new System.Drawing.Size(46, 20);
             this.CCubicTextBox.TabIndex = 7;
             this.CCubicTextBox.Text = "0";
-            this.CCubicTextBox.Enter += new System.EventHandler(this.CCubicTextBox_Enter);
-            this.CCubicTextBox.Leave += new System.EventHandler(this.CCubicTextBox_Leave);
+            this.CCubicTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.CCubicTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CleanUserInput_KeyPress);
+            this.CCubicTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // DCubicLabel
             // 
@@ -370,8 +378,9 @@
             this.DCubicTextBox.Size = new System.Drawing.Size(46, 20);
             this.DCubicTextBox.TabIndex = 8;
             this.DCubicTextBox.Text = "0";
-            this.DCubicTextBox.Enter += new System.EventHandler(this.DCubicTextBox_Enter);
-            this.DCubicTextBox.Leave += new System.EventHandler(this.DCubicTextBox_Leave);
+            this.DCubicTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.DCubicTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CleanUserInput_KeyPress);
+            this.DCubicTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // R2TextBox
             // 
@@ -382,8 +391,9 @@
             this.R2TextBox.Size = new System.Drawing.Size(46, 20);
             this.R2TextBox.TabIndex = 11;
             this.R2TextBox.Text = "1";
-            this.R2TextBox.Enter += new System.EventHandler(this.R2TextBox_Enter);
-            this.R2TextBox.Leave += new System.EventHandler(this.R2TextBox_Leave);
+            this.R2TextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.R2TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CleanUserInput_KeyPress);
+            this.R2TextBox.Leave += new System.EventHandler(this.RTextBox_Leave);
             // 
             // R2CircleLabel
             // 
@@ -404,8 +414,9 @@
             this.KTextBox.Size = new System.Drawing.Size(46, 20);
             this.KTextBox.TabIndex = 10;
             this.KTextBox.Text = "0";
-            this.KTextBox.Enter += new System.EventHandler(this.KTextBox_Enter);
-            this.KTextBox.Leave += new System.EventHandler(this.KTextBox_Leave);
+            this.KTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.KTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CleanUserInput_KeyPress);
+            this.KTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // KCircleLabel
             // 
@@ -426,8 +437,9 @@
             this.HTextBox.Size = new System.Drawing.Size(46, 20);
             this.HTextBox.TabIndex = 9;
             this.HTextBox.Text = "0";
-            this.HTextBox.Enter += new System.EventHandler(this.HTextBox_Enter);
-            this.HTextBox.Leave += new System.EventHandler(this.HTextBox_Leave);
+            this.HTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.HTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CleanUserInput_KeyPress);
+            this.HTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // HCircleLabel
             // 
@@ -852,7 +864,6 @@
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "                            ";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GraphPB)).EndInit();
             this.XGroupBox.ResumeLayout(false);
             this.XGroupBox.PerformLayout();
