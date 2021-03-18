@@ -1,6 +1,7 @@
 ﻿/*
  * NAME: Form1.cs
- * AUTHOR: Jake Rogers (z1826513) John Erwin (z1856469)
+ * AUTHORS: Jake Rogers (z1826513) 
+ *          John Erwin (z1856469)
  * 
  * This file contains the functions that build the form (Form1) and
  * all the event handlers that are necessary to interact with the
