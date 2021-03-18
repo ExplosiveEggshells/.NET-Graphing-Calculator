@@ -390,6 +390,11 @@ namespace RogersErwin_Assign4
             LogRichTextBox.SelectionStart = LogRichTextBox.Text.Length;
             LogRichTextBox.ScrollToCaret();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     #endregion
 }
